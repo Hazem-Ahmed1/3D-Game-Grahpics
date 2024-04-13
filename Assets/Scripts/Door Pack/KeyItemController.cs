@@ -4,29 +4,44 @@ using UnityEngine;
 
 public class KeyItemController : MonoBehaviour
 {
-    [SerializeField] private bool redDoor = false;
-    [SerializeField] private bool redKey = false;
-    [SerializeField] private KeyInventory _keyInventory = null;
-
+    [SerializeField] private bool Door = false;
+    [SerializeField] private bool Key = false;
+    [SerializeField] private KeyInventory PlayerInventory = null;
+    [SerializeField] private KeyInventory EnemyInventory = null;
+    private string interactTableTagEnemy = "EnemyInteractiveObj";
+    private string interactTableTagPlayer = "Player";
     private KeyDoorController doorObject;
+
     private void Start()
     {
-        if (redDoor)
+        if (Door)
         {
             doorObject = GetComponent<KeyDoorController>();
         }
-        
     }
+
     public void ObjectInteraction()
     {
-        if (redDoor)
-        {
-        doorObject.PlayAnimation();
-        }
-        else if (redKey)
-        {
-            _keyInventory.hasRedKey = true;
-            gameObject.SetActive(false);
-        }
+        RaycastHit hit;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out hit))
+            if (Door)
+            {
+                doorObject.PlayAnimation();
+            }
+            else if (Key)
+            {
+                if (hit.collider.CompareTag(interactTableTagPlayer))
+                {
+                    PlayerInventory.hasDoorLockedKey = true;
+                    gameObject.SetActive(false);
+                }
+                else if (hit.collider.CompareTag(interactTableTagEnemy))
+                {
+                    EnemyInventory.hasDoorLockedKey = true;
+                    gameObject.SetActive(false);
+                }
+            }
     }
 }
