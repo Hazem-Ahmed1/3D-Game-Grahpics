@@ -5,15 +5,20 @@ using UnityEngine;
 public class KeyDoorController : MonoBehaviour
 {
     private Animator doorAnim;
+    private float distancePlayer;
+    private float distanceEnemy;
+    [SerializeField]GameObject Player;
+    [SerializeField]GameObject Enemy;
     private bool doorOpen = false;
     
-    [Header("Animation Names")]
+    // [Header("Animation Names")]
     [SerializeField] private string openAnimationName = "OpenDoor";
     [SerializeField] private string closeAnimationName = "CloseDoor";
-    [SerializeField] private int timeToShowUI = 1;
+    [SerializeField] private int  TimeLockedUI = 1;
     [SerializeField] private GameObject showDoorLockedUI = null;
-    [SerializeField] private KeyInventory _keyInventory = null;
-    [SerializeField] private int waitTimer = 1;
+    [SerializeField]private KeyInventory EnemyInventory;
+    [SerializeField]private KeyInventory PlayerInventory;
+    [SerializeField] private int waitTimerAnimation = 1;
     [SerializeField] private bool pauseInteraction = false;
     [SerializeField] private AudioSource audioSource = null;
     [SerializeField] private AudioClip audioClip = null;
@@ -26,12 +31,19 @@ public class KeyDoorController : MonoBehaviour
     private IEnumerator PauseDoorInteraction()
     {
         pauseInteraction = true;
-        yield return new WaitForSeconds(waitTimer);
+        yield return new WaitForSeconds(waitTimerAnimation);
         pauseInteraction = false;
     }
     public void PlayAnimation()
     {
-        if (_keyInventory.hasRedKey)
+        distancePlayer = Vector3.Distance(Player.gameObject.transform.position, this.gameObject.transform.position);
+        distanceEnemy = Vector3.Distance(Enemy.gameObject.transform.position, this.gameObject.transform.position);
+
+        if (EnemyInventory.hasDoorLockedKey && distanceEnemy <= 5)
+        {
+            OpenDoor();
+        }
+        else if (PlayerInventory.hasDoorLockedKey && distancePlayer <= 5)
         {
             OpenDoor();
         }
@@ -49,7 +61,7 @@ public class KeyDoorController : MonoBehaviour
             doorAnim.Play(openAnimationName, 0, 0.0f);
             doorOpen = true;
             StartCoroutine(PauseDoorInteraction());
-            Physics.IgnoreLayerCollision(6,3, true);
+            Physics.IgnoreLayerCollision(7,3, true);
         }
         else if(doorOpen && !pauseInteraction)
         {
@@ -58,13 +70,13 @@ public class KeyDoorController : MonoBehaviour
             doorAnim.Play(closeAnimationName, 0, 0.0f);
             doorOpen = false;
             StartCoroutine(PauseDoorInteraction());
-            Physics.IgnoreLayerCollision(6,3, false);
+            Physics.IgnoreLayerCollision(7,3, false);
         }
     }
     IEnumerator ShowDoorLocked()
     {
         showDoorLockedUI.SetActive(true);
-        yield return new WaitForSeconds(timeToShowUI);
+        yield return new WaitForSeconds(TimeLockedUI);
         showDoorLockedUI.SetActive(false);
     }
 }
