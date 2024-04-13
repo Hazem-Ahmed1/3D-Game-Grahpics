@@ -3,29 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class KeyRaycast : MonoBehaviour
+public class StealKey : MonoBehaviour
 {
     [SerializeField] public int rayLenght = 5;
     [SerializeField] private LayerMask LayerMaskInteract;
     [SerializeField] private string excluseLayerMask = null;
-    private KeyItemController raycastedObject;
-    [SerializeField] private KeyCode openDoorKey = KeyCode.F;
-    // [SerializeField] private KeyCode stealDoorKey = KeyCode.Q;
+    [SerializeField] private Image crosshair = null ;
     [SerializeField] private GameObject Enemy;
     [SerializeField] private GameObject Player;
     private KeyInventory EnemyInventory;
     private KeyInventory PlayerInventory;
-    [SerializeField] private Image crosshair = null ;
     private bool isCrosshairActive;
     private bool doOnce;
-    private string interactTableTagDoor = "DoorInteractiveObj";
-    // private string interactTableTagEnemy = "EnemyInteractiveObj";
-
+    private string interactAbleTagPlayer = "Player";
+    private string interactAbleTagEnemy = "EnemyInteractiveObj";
+    private KeyItemController raycastedObject;
+    [SerializeField] private KeyCode stealDoorKey = KeyCode.Q;
+    private bool key;
+    // Start is called before the first frame update
     void Awake()
     {
         EnemyInventory = Enemy.GetComponent<KeyInventory>();
         PlayerInventory = Player.GetComponent<KeyInventory>();
     }
+
     private void Update()
     {
         RaycastHit hit;
@@ -33,28 +34,23 @@ public class KeyRaycast : MonoBehaviour
         int mask = 1 << LayerMask.NameToLayer(excluseLayerMask) | LayerMaskInteract.value;
         if (Physics.Raycast(transform.position,fwd, out hit,rayLenght,mask))
         {
-            if(hit.collider.CompareTag(interactTableTagDoor))
+            if(hit.collider.CompareTag(interactAbleTagPlayer) || hit.collider.CompareTag(interactAbleTagEnemy))
             {
-                // Debug.Log("Mask");
                 if (!doOnce)
                 {
-                    raycastedObject = hit.collider.gameObject.GetComponent<KeyItemController>();
+                    // raycastedObject = hit.collider.gameObject.GetComponent<KeyItemController>();
                     CrossHairChange(true);
                 }
                 isCrosshairActive = true;
                 doOnce = true;
-                if (Input.GetKeyDown(openDoorKey))
+                if (Input.GetKeyDown(stealDoorKey))
                 {
-                    raycastedObject.ObjectInteraction();
+                    if (EnemyInventory.hasDoorLockedKey && !PlayerInventory.hasDoorLockedKey)
+                    {
+                        EnemyInventory.hasDoorLockedKey = false;
+                        PlayerInventory.hasDoorLockedKey = true;
+                    }
                 }
-                // if (Input.GetKeyDown(stealDoorKey))
-                // {
-                //     if (EnemyInventory.hasDoorLockedKey)
-                //     {
-                //         EnemyInventory.hasDoorLockedKey = false;
-                //         PlayerInventory.hasDoorLockedKey = true;
-                //     }
-                // }
             }
         }
         else

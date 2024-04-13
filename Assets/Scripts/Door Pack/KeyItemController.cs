@@ -8,8 +8,12 @@ public class KeyItemController : MonoBehaviour
     [SerializeField] private bool Key = false;
     [SerializeField] private KeyInventory PlayerInventory = null;
     [SerializeField] private KeyInventory EnemyInventory = null;
-    private string interactTableTagEnemy = "EnemyInteractiveObj";
-    private string interactTableTagPlayer = "Player";
+    [SerializeField]GameObject Player;
+    [SerializeField]GameObject Enemy;
+    // private string interactTableTagEnemy = "EnemyInteractiveObj";
+    // private string interactTableTagPlayer = "Player";
+    private float distancePlayer;
+    private float distanceEnemy;
     private KeyDoorController doorObject;
 
     private void Start()
@@ -22,26 +26,24 @@ public class KeyItemController : MonoBehaviour
 
     public void ObjectInteraction()
     {
-        RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-        if (Physics.Raycast(ray, out hit))
-            if (Door)
+        if (Door)
+        {
+            doorObject.PlayAnimation();
+        }
+        else if (Key)
+        {
+            distancePlayer = Vector3.Distance(Player.gameObject.transform.position, this.gameObject.transform.position);
+            distanceEnemy = Vector3.Distance(Enemy.gameObject.transform.position, this.gameObject.transform.position);
+            Debug.Log(distanceEnemy);
+            Debug.Log(distancePlayer);
+            if (distancePlayer <= 5)
             {
-                doorObject.PlayAnimation();
-            }
-            else if (Key)
+                PlayerInventory.hasDoorLockedKey = true;
+            }else if (distanceEnemy <= 5)
             {
-                if (hit.collider.CompareTag(interactTableTagPlayer))
-                {
-                    PlayerInventory.hasDoorLockedKey = true;
-                    gameObject.SetActive(false);
-                }
-                else if (hit.collider.CompareTag(interactTableTagEnemy))
-                {
-                    EnemyInventory.hasDoorLockedKey = true;
-                    gameObject.SetActive(false);
-                }
+                EnemyInventory.hasDoorLockedKey=true;
             }
+            gameObject.SetActive(false);
+        }
     }
 }
