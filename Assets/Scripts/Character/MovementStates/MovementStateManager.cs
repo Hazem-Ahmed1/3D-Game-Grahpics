@@ -28,12 +28,18 @@ public class MovementStateManager : MonoBehaviour
 
     [HideInInspector] public Animator anim;
 
+    // <summary>
+    [SerializeField] Transform aimPos;
+    [SerializeField] float aimSmoothSpeed = 20;
+    [SerializeField] LayerMask aimMask;
+    //</summary> 
+
 
 
     // Start is called before the first frame update
     void Start()
     {
-        anim = GetComponentInChildren<Animator>();
+        anim = GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();
         SwitchState(idle);
     }
@@ -46,6 +52,15 @@ public class MovementStateManager : MonoBehaviour
         anim.SetFloat("hInput", hzInput);
         anim.SetFloat("vInput", vInput);
         currentState.UpdateState(this);
+
+        // <summary>
+        Vector2 screenCenter = new Vector2(Screen.width / 2, Screen.height/2);
+        Ray ray = Camera.main.ScreenPointToRay(screenCenter);
+        if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity,aimMask))
+        {
+            aimPos.position = Vector3.Lerp(aimPos.position, hit.point, aimSmoothSpeed * Time.deltaTime);
+        }
+        //</summary> 
     }
 
     public void SwitchState(MovementBaseState state)
