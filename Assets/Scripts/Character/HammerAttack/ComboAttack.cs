@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ComboAttack : MonoBehaviour
 {
-    public Animator animator;
+    Animator animator;
     public int CountAttackClick;
     private bool isAttacking;
 
