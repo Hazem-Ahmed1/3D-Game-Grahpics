@@ -33,7 +33,7 @@ public class MovementStateManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        anim = GetComponent<Animator>();
+        anim = GetComponentInChildren<Animator>();
         characterController = GetComponent<CharacterController>();
         SwitchState(idle);
     }
