@@ -17,7 +17,7 @@ public class ComboAttack : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !isAttacking) // Assuming left mouse button triggers the attack
+        if (Input.GetKeyDown(KeyCode.G) && !isAttacking) // Assuming left mouse button triggers the attack
         {
             StartCoroutine(StartAttack());
         }
