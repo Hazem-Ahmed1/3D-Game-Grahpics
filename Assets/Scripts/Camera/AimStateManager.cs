@@ -11,10 +11,12 @@ public class AimStateManager : MonoBehaviour
     Camera mainCamera;
     public float aimDuration = 0.3f;
     public Rig AimLayer;
+    RayCastWeapon weapon;
 
     // Start is called before the first frame update
     void Start()
     {
+        weapon = GetComponentInChildren<RayCastWeapon>();
         mainCamera = Camera.main;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -29,13 +31,19 @@ public class AimStateManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButton(1))
+        AimLayer.weight = 1f;
+
+        if (Input.GetButtonDown("Fire1"))
         {
-            AimLayer.weight += Time.deltaTime / aimDuration;
+            weapon.StartFiring();
         }
-        else
+        if(weapon.isFiring)
         {
-            AimLayer.weight -= Time.deltaTime / aimDuration;
+            weapon.UpdateFiring(Time.deltaTime);
+        }
+        if (Input.GetButtonUp("Fire1"))
+        {
+            weapon.StopFiring();
         }
     }
 }
