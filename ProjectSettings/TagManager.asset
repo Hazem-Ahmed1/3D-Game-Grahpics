@@ -7,6 +7,8 @@ TagManager:
   - DoorInteractiveObj
   - KeyInteractivObj
   - EnemyInteractiveObj
+  - FxTemporaire
+  - OJB
   - Key
   layers:
   - Default
