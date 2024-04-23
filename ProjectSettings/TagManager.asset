@@ -10,6 +10,7 @@ TagManager:
   - FxTemporaire
   - OJB
   - Key
+  - Bullet_Dancing
   layers:
   - Default
   - TransparentFX
