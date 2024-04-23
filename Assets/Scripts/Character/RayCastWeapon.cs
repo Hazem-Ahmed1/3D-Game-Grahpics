@@ -21,6 +21,9 @@ public class RayCastWeapon : MonoBehaviour
     float AccumulatedTime;
     public GameObject Bulletprefab;
 
+
+    public AnimationClip weaponAnimation;
+
     public void StartFiring()
     {
         isFiring = true;
