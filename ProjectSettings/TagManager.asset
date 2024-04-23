@@ -9,6 +9,7 @@ TagManager:
   - EnemyInteractiveObj
   - FxTemporaire
   - OJB
+  - Key
   layers:
   - Default
   - TransparentFX
