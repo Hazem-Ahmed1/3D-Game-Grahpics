@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class Boost : MonoBehaviour
 {
-    [SerializeField] MovementStateManager movementStateManager;
+    MovementStateManager movementStateManager;
     [SerializeField] GameObject Bottle;
-    [SerializeField] GameObject BoostEffect;
+    GameObject BoostEffect;
     [SerializeField] private int ExtremeBoost = 8; // Change the initial value to 8
     [SerializeField] private float BoostDuration = 5f;
 
@@ -16,6 +16,11 @@ public class Boost : MonoBehaviour
     private float originalRunSpeed;
     private float originalRunBackSpeed;
 
+    void Awake()
+    {
+        movementStateManager = GameObject.Find("Duzzy").GetComponent<MovementStateManager>();
+        BoostEffect = GameObject.Find("SpeedLines");
+    }
     private void Start()
     {
         // Save the original speeds when the Boost object is initialized
@@ -29,10 +34,9 @@ public class Boost : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            BoostEffect.gameObject.SetActive(true);
+            BoostEffect.GetComponent<ParticleSystem>().Play();
+            BoostEffect.GetComponent<AudioSource>().Play();
             StartCoroutine(speedBoost());
-            
-
         }
     }
 
@@ -56,6 +60,7 @@ public class Boost : MonoBehaviour
 
         // Destroy the Boost object
         Destroy(this.gameObject);
-        BoostEffect.gameObject.SetActive(false);
+        BoostEffect.GetComponent<ParticleSystem>().Stop();
+        BoostEffect.GetComponent<AudioSource>().Stop();
     }
 }
