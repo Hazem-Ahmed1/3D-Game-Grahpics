@@ -19,7 +19,7 @@ public class AiAgent : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         stateMachine = new AiStateMachine(this);
         PlayerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-        PlayerTransform = GameObject.FindGameObjectWithTag("Key").transform;
+        KeyTransform = GameObject.FindGameObjectWithTag("Key").transform;
         // Create instance from this state
         stateMachine.RegisterState(new AiGetKeyState());
         stateMachine.RegisterState(new AiChasePlayerState());
@@ -31,6 +31,7 @@ public class AiAgent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // stateMachine.changeState(initialState);
         stateMachine.Update();
     }
 }
