@@ -11,9 +11,9 @@ public class KeyRaycast : MonoBehaviour
     private KeyItemController raycastedObject;
     [SerializeField] private KeyCode openDoorKey = KeyCode.F;
     // [SerializeField] private KeyCode stealDoorKey = KeyCode.Q;
-    [SerializeField] private GameObject Enemy;
+    // [SerializeField] private GameObject Enemy;
     [SerializeField] private GameObject Player;
-    private KeyInventory EnemyInventory;
+    // private KeyInventory EnemyInventory;
     private KeyInventory PlayerInventory;
     [SerializeField] private Image crosshair = null ;
     private bool isCrosshairActive;
@@ -23,7 +23,7 @@ public class KeyRaycast : MonoBehaviour
 
     void Awake()
     {
-        EnemyInventory = Enemy.GetComponent<KeyInventory>();
+        // EnemyInventory = Enemy.GetComponent<KeyInventory>();
         PlayerInventory = Player.GetComponent<KeyInventory>();
     }
     private void Update()
