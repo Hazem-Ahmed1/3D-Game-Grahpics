@@ -51,7 +51,6 @@ public class MovementStateManager : MonoBehaviour
         Gravity();
         anim.SetFloat("hInput", hzInput);
         anim.SetFloat("vInput", vInput);
-
         if (Input.GetKeyDown(KeyCode.J))
         {
             StartRandomMovement();
