@@ -6,6 +6,8 @@ using UnityEngine;
 public class Boost : MonoBehaviour
 {
     [SerializeField] MovementStateManager movementStateManager;
+    [SerializeField] GameObject Bottle;
+    [SerializeField] GameObject BoostEffect;
     [SerializeField] private int ExtremeBoost = 8; // Change the initial value to 8
     [SerializeField] private float BoostDuration = 5f;
 
@@ -27,7 +29,9 @@ public class Boost : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            BoostEffect.gameObject.SetActive(true);
             StartCoroutine(speedBoost());
+            
 
         }
     }
@@ -40,7 +44,7 @@ public class Boost : MonoBehaviour
         movementStateManager.runSpeed *= ExtremeBoost;
         movementStateManager.runBackSpeed *= ExtremeBoost;
 
-        this.gameObject.SetActive(false);
+        Bottle.gameObject.SetActive(false);
 
         yield return new WaitForSeconds(BoostDuration);
 
@@ -52,5 +56,6 @@ public class Boost : MonoBehaviour
 
         // Destroy the Boost object
         Destroy(this.gameObject);
+        BoostEffect.gameObject.SetActive(false);
     }
 }
