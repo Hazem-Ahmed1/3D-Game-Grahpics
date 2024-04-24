@@ -8,7 +8,7 @@ public class KeyDoorController : MonoBehaviour
     private float distancePlayer;
     private float distanceEnemy;
     [SerializeField]GameObject Player;
-    [SerializeField]GameObject Enemy;
+    // [SerializeField]GameObject Enemy;
     private bool doorOpen = false;
     
     // [Header("Animation Names")]
@@ -16,12 +16,12 @@ public class KeyDoorController : MonoBehaviour
     [SerializeField] private string closeAnimationName = "CloseDoor";
     [SerializeField] private int  TimeLockedUI = 1;
     [SerializeField] private GameObject showDoorLockedUI = null;
-    [SerializeField]private KeyInventory EnemyInventory;
+    // [SerializeField]private KeyInventory EnemyInventory;
     [SerializeField]private KeyInventory PlayerInventory;
     [SerializeField] private int waitTimerAnimation = 1;
     [SerializeField] private bool pauseInteraction = false;
-    [SerializeField] private AudioSource audioSource = null;
-    [SerializeField] private AudioClip audioClip = null;
+    // [SerializeField] private AudioSource audioSource = null;
+    // [SerializeField] private AudioClip audioClip = null;
 
     private void Awake()
     {
@@ -37,13 +37,14 @@ public class KeyDoorController : MonoBehaviour
     public void PlayAnimation()
     {
         distancePlayer = Vector3.Distance(Player.gameObject.transform.position, this.gameObject.transform.position);
-        distanceEnemy = Vector3.Distance(Enemy.gameObject.transform.position, this.gameObject.transform.position);
+        // distanceEnemy = Vector3.Distance(Enemy.gameObject.transform.position, this.gameObject.transform.position);
 
-        if (EnemyInventory.hasDoorLockedKey && distanceEnemy <= 5)
-        {
-            OpenDoor();
-        }
-        else if (PlayerInventory.hasDoorLockedKey && distancePlayer <= 5)
+        // if (EnemyInventory.hasDoorLockedKey && distanceEnemy <= 5)
+        // {
+        //     OpenDoor();
+        // }
+        // else
+        if (PlayerInventory.hasDoorLockedKey && distancePlayer <= 5)
         {
             OpenDoor();
         }
@@ -56,8 +57,8 @@ public class KeyDoorController : MonoBehaviour
     {
         if (!doorOpen && !pauseInteraction)
         {
-            audioSource.clip = audioClip;
-            audioSource.Play();
+            // audioSource.clip = audioClip;
+            // audioSource.Play();
             doorAnim.Play(openAnimationName, 0, 0.0f);
             doorOpen = true;
             StartCoroutine(PauseDoorInteraction());
@@ -65,8 +66,8 @@ public class KeyDoorController : MonoBehaviour
         }
         else if(doorOpen && !pauseInteraction)
         {
-            audioSource.clip = audioClip;
-            audioSource.Play();
+            // audioSource.clip = audioClip;
+            // audioSource.Play();
             doorAnim.Play(closeAnimationName, 0, 0.0f);
             doorOpen = false;
             StartCoroutine(PauseDoorInteraction());

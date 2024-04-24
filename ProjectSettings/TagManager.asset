@@ -11,6 +11,7 @@ TagManager:
   - OJB
   - Key
   - Bullet_Dancing
+  - Inventory
   layers:
   - Default
   - TransparentFX
