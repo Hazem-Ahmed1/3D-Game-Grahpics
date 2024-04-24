@@ -11,6 +11,7 @@ TagManager:
   - OJB
   - Key
   - Bullet_Dancing
+  - Blind_Bullet
   layers:
   - Default
   - TransparentFX

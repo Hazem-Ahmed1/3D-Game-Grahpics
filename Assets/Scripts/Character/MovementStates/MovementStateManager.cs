@@ -45,7 +45,10 @@ public class MovementStateManager : MonoBehaviour
         Gravity();
         anim.SetFloat("hInput", hzInput);
         anim.SetFloat("vInput", vInput);
-        currentState.UpdateState(this);
+        if (currentState != null)
+        {
+            currentState.UpdateState(this);
+        }
 
     }
 
