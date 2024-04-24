@@ -8,6 +8,8 @@ public class RayCastWeapon : MonoBehaviour
 
     public int FireRate = 25;
 
+    public int maxAmmo = 1;
+    public int currentAmmo;
 
     public ParticleSystem muzzleFlash;
     public ParticleSystem hitEffect; 
@@ -24,16 +26,23 @@ public class RayCastWeapon : MonoBehaviour
 
     public AnimationClip weaponAnimation;
 
+    private void Start()
+    {
+        currentAmmo = maxAmmo;
+    }
     public void StartFiring()
     {
-        isFiring = true;
-        AccumulatedTime = 0.0f;
-        FireBullet();
-        GameObject bullet = Instantiate(Bulletprefab, RaycastOrigin.position, Quaternion.identity);
-        BulletBehav bulletComponent = bullet.GetComponent<BulletBehav>();
-        if (bulletComponent != null)
+        if(currentAmmo > 0)
         {
-            bulletComponent.MoveTowards(hitInfo.point);
+            isFiring = true;
+            AccumulatedTime = 0.0f;
+            FireBullet();
+            GameObject bullet = Instantiate(Bulletprefab, RaycastOrigin.position, Quaternion.identity);
+            BulletBehav bulletComponent = bullet.GetComponent<BulletBehav>();
+            if (bulletComponent != null)
+            {
+                bulletComponent.MoveTowards(hitInfo.point);
+            }
         }
     }
 
@@ -62,6 +71,14 @@ public class RayCastWeapon : MonoBehaviour
             hitEffect.transform.forward = hitInfo.normal;
             hitEffect.Emit(1);
         };
+
+        currentAmmo--;
+        if (currentAmmo <= 0)
+        {
+            Destroy(this.gameObject);
+        }
+
+
     }
 
     public void StopFiring() { 

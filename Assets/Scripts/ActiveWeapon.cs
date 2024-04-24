@@ -33,7 +33,7 @@ public class ActiveWeapon : MonoBehaviour
     {
         if (weapon)
         {
-            if (Input.GetButtonDown("Fire1"))
+            if (Input.GetButtonDown("Fire1") && !weapon.isFiring)
             {
                 weapon.StartFiring();
             }
@@ -41,18 +41,13 @@ public class ActiveWeapon : MonoBehaviour
             {
                 weapon.UpdateFiring(Time.deltaTime);
             }
-            if (Input.GetButtonUp("Fire1"))
-            {
-                weapon.StopFiring();
-            }
         }
         else
         {
             // Hammer Logic !
             HandIK.weight = 0f;
-            animator.SetLayerWeight(2,0.0f);
+            animator.SetLayerWeight(2, 0.0f);
         }
-
     }
 
     public void Equip(RayCastWeapon Newweapon)

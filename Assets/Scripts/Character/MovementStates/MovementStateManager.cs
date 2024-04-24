@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class MovementStateManager : MonoBehaviour
@@ -28,9 +26,9 @@ public class MovementStateManager : MonoBehaviour
 
     [HideInInspector] public Animator anim;
 
+    public bool isRandomMovementActive = false;
 
-
-    // Start is called before the first frame update
+    // make it static it may works with out  references 
     void Start()
     {
         anim = GetComponentInChildren<Animator>();
@@ -38,16 +36,28 @@ public class MovementStateManager : MonoBehaviour
         SwitchState(idle);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        GetDirectionAndMove();
+        if (!isRandomMovementActive)
+        {
+            GetDirectionAndMove();
+            currentState.UpdateState(this);
+        }
+        else
+        {
+            RandomMovement();
+        }
+
         Gravity();
         anim.SetFloat("hInput", hzInput);
         anim.SetFloat("vInput", vInput);
-        if (currentState != null)
+        if (Input.GetKeyDown(KeyCode.J))
         {
-            currentState.UpdateState(this);
+            StartRandomMovement();
+        }
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            EndRandomMovement();
         }
 
     }
@@ -82,8 +92,23 @@ public class MovementStateManager : MonoBehaviour
         characterController.Move(velocity * Time.deltaTime);
     }
 
-    // private void OnDrawGizmos(){
-    //     Gizmos.color = Color.red;
-    //     Gizmos.DrawWireSphere(spherePos,characterController.radius - 0.05f);
-    // }
+    public void StartRandomMovement()
+    {
+        isRandomMovementActive = true;
+    }
+
+    public void EndRandomMovement()
+    {
+        isRandomMovementActive = false;
+    }
+
+    void RandomMovement()
+    {
+        float randomX = Random.Range(-1f, 1f);
+        float randomZ = Random.Range(-1f, 1f);
+        Vector3 randomDirection = new Vector3(randomX, 0f, randomZ).normalized;
+        float randomSpeed = Random.Range(0.5f, 1f);
+        Vector3 moveVector = randomDirection * currentMovementSpeed * randomSpeed * Time.deltaTime;
+        characterController.Move(moveVector);
+    }
 }
