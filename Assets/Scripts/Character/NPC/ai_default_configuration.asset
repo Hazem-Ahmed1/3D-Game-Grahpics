@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c93ee5216819f6b4e92ace2a0a12cebe, type: 3}
   m_Name: ai_default_configuration
   m_EditorClassIdentifier: 
-  maxTime: 1
+  maxTime: 0.1
   maxDistance: 1
