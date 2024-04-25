@@ -4,8 +4,17 @@ using UnityEngine;
 
 public class AiWeapons : MonoBehaviour
 {
-    public void EquipWeapon(RayCastWeapon weapon)
-    {
-        
-    }
+    
+
+    // void Update(){
+    //     StartCoroutine(Shot());
+    // //     var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+    // //     bullet.GetComponent<Rigidbody>().velocity = bulletSpawnPoint.forward * bulletSpeed;
+    // }
+    // IEnumerator Shot()
+    // {
+    //     var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+    //     bullet.GetComponent<Rigidbody>().velocity = bulletSpawnPoint.forward * bulletSpeed;
+    //     yield return new WaitForSeconds(2f);
+    // }
 }
