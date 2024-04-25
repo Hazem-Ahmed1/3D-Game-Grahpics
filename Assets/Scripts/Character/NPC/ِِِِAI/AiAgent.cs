@@ -10,6 +10,7 @@ public class AiAgent : MonoBehaviour
     [HideInInspector]
     public NavMeshAgent navMeshAgent;
     public AiAgentConfig config;
+    public KeyDoorController keyDoorController;
 
 
     [HideInInspector] public Transform PlayerTransform;
@@ -21,6 +22,7 @@ public class AiAgent : MonoBehaviour
     public GameObject RigLayer;
     public Animator animator;
     public bool hasDoorLockedKey = false;
+    public bool IsOpen = false;
 
     // Start is called before the first frame update
     void Start()
@@ -28,8 +30,9 @@ public class AiAgent : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         stateMachine = new AiStateMachine(this);
         PlayerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-        FinalGoalTransform = GameObject.FindGameObjectWithTag("DoorGoal").transform;
+        FinalGoalTransform = GameObject.Find("LockedDoor").transform;
         KeyTransform = GameObject.Find("KeyDoor").transform;
+        // keyDoorController = GameObject.Find("LockedDoor").GetComponent<KeyDoorController>();
 
         // Create instance from this state
         stateMachine.RegisterState(new AiGetKeyState());
@@ -44,11 +47,9 @@ public class AiAgent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (hasDoorLockedKey)
+        if (!hasDoorLockedKey)
         {
-            // Debug.Log("Bedo");
-            initialState = AiStateId.goToFinalGoal;
-            stateMachine.changeState(initialState);
+            initialState = AiStateId.goToKey;
         }
         stateMachine.changeState(initialState);
         stateMachine.Update();
@@ -59,9 +60,25 @@ public class AiAgent : MonoBehaviour
         // Debug.Log("1");
         if (other.gameObject.CompareTag("DoorInteractiveObj"))
         {
-            // Debug.Log("Bedo");
             hasDoorLockedKey = true;
+            initialState = AiStateId.goToFinalGoal;
+            stateMachine.changeState(initialState);
             Destroy(other.gameObject);
+            navMeshAgent.stoppingDistance = 0;
+        }
+        else if (other.gameObject.CompareTag("DoorGoal") && hasDoorLockedKey && !IsOpen)
+        {
+            keyDoorController.OpenDoor();
+            navMeshAgent.stoppingDistance = 1.5f;
+            initialState = AiStateId.ChasePlayer;
+            stateMachine.changeState(initialState);
+            Physics.IgnoreLayerCollision(3,7);
+            IsOpen = true;
+        }
+        else if (other.gameObject.CompareTag("Bullet_Dancing"))
+        {
+            initialState = AiStateId.Dance;
+            stateMachine.changeState(initialState);
         }
     }
 }
