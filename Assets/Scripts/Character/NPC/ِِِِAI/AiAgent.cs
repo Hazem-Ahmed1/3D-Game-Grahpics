@@ -12,7 +12,6 @@ public class AiAgent : MonoBehaviour
     public AiAgentConfig config;
     public KeyDoorController keyDoorController;
 
-
     [HideInInspector] public Transform PlayerTransform;
     [HideInInspector] public Transform KeyTransform;
     [HideInInspector] public Transform FinalGoalTransform;
@@ -23,6 +22,12 @@ public class AiAgent : MonoBehaviour
     public Animator animator;
     public bool hasDoorLockedKey = false;
     public bool IsOpen = false;
+    private float distancePlayer;
+
+    // for weapon
+    public Transform bulletSpawnPoint;
+    public GameObject bulletPrefab;
+    public float bulletSpeed = 10;
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +44,7 @@ public class AiAgent : MonoBehaviour
         stateMachine.RegisterState(new AiChasePlayerState());
         stateMachine.RegisterState(new AiGoToFinalGoalState());
         stateMachine.RegisterState(new AiDanceState());
+        stateMachine.RegisterState(new AiAttackPlayerState());
         // stateMachine.RegisterState(new AiDeathState());
         initialState = AiStateId.goToKey;
         stateMachine.changeState(initialState);
@@ -47,9 +53,19 @@ public class AiAgent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        distancePlayer = Vector3.Distance(PlayerTransform.position, this.gameObject.transform.position);
         if (!hasDoorLockedKey)
         {
             initialState = AiStateId.goToKey;
+        }
+        if (hasDoorLockedKey)
+        {
+            initialState = AiStateId.goToKey;
+        }
+        if (distancePlayer <= 15f && !hasDoorLockedKey)
+        {
+            initialState = AiStateId.AttackPlayer;
+            // StartCoroutine(Shot());
         }
         stateMachine.changeState(initialState);
         stateMachine.Update();
@@ -57,7 +73,6 @@ public class AiAgent : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        // Debug.Log("1");
         if (other.gameObject.CompareTag("DoorInteractiveObj"))
         {
             hasDoorLockedKey = true;

@@ -32,7 +32,6 @@ public class AiDanceState : AiState
     IEnumerator TimeDance(AiAgent agent)
     {
         yield return new WaitForSeconds(5);
-        // Debug.Log("yyy");
         agent.navMeshAgent.speed = 7;
         agent.animator.SetLayerWeight(1,0);
         agent.RigLayer.GetComponent<Rig>().weight = 1;
