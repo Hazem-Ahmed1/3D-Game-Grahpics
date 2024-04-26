@@ -8,6 +8,7 @@ public enum AiStateId{
     AttackPlayer,
     goToFinalGoal,
     Dance,
+    Blind,
     StealKey
 }
 public interface AiState

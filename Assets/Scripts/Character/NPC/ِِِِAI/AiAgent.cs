@@ -13,6 +13,8 @@ public class AiAgent : MonoBehaviour
 
     public KeyDoorController keyDoorController;
     public KeyInventory keyInventory;
+    public GameObject KeyFlag;
+    public GameObject BodyLight;
 
     [HideInInspector] public GameObject PlayerTransform;
     [HideInInspector] public GameObject KeyTransform;
@@ -27,6 +29,7 @@ public class AiAgent : MonoBehaviour
     public bool hasDoorLockedKey = false;
     public bool IsOpen = false;
     public bool dance = false;
+    public bool Blind = false;
     private float distancePlayer;
 
     // for weapon
@@ -49,6 +52,7 @@ public class AiAgent : MonoBehaviour
         stateMachine.RegisterState(new AiChasePlayerState());
         stateMachine.RegisterState(new AiGoToFinalGoalState());
         stateMachine.RegisterState(new AiDanceState());
+        stateMachine.RegisterState(new AiBlindState());
         stateMachine.RegisterState(new AiAttackPlayerState());
         stateMachine.RegisterState(new AiStealState());
         // stateMachine.RegisterState(new AiDeathState());
@@ -57,8 +61,11 @@ public class AiAgent : MonoBehaviour
     }
 
     // Update is called once per frame
+    [System.Obsolete]
     void Update()
     {
+        KeyFlag.active = (hasDoorLockedKey)? true : false;
+        BodyLight.active = (hasDoorLockedKey)? true : false;
         distancePlayer = Vector3.Distance(PlayerTransform.transform.position, this.gameObject.transform.position);
         float layerWeight = PlayerTransform.GetComponentInChildren<Animator>().GetLayerWeight(3);
 
@@ -70,7 +77,7 @@ public class AiAgent : MonoBehaviour
         {
             initialState = AiStateId.goToFinalGoal;
         }
-        if (distancePlayer <= 10f && !hasDoorLockedKey && !dance)
+        if (distancePlayer <= 10f && !hasDoorLockedKey && !dance && !Blind)
         {
             initialState = AiStateId.AttackPlayer;
         }
@@ -78,7 +85,7 @@ public class AiAgent : MonoBehaviour
         {
             initialState = AiStateId.ChasePlayer;
         }
-        if (keyInventory.hasDoorLockedKey && distancePlayer < 3f )
+        if (keyInventory.hasDoorLockedKey && distancePlayer < 5f && dance)
         {
             initialState = AiStateId.StealKey;
         }
@@ -88,7 +95,7 @@ public class AiAgent : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("DoorInteractiveObj"))
+        if (other.gameObject.name.Equals("KeyDoor"))
         {
             hasDoorLockedKey = true;
             initialState = AiStateId.goToFinalGoal;
@@ -98,7 +105,9 @@ public class AiAgent : MonoBehaviour
         }
         else if (other.gameObject.CompareTag("DoorGoal") && hasDoorLockedKey && !IsOpen)
         {
+            // print("Bedo");
             keyDoorController.OpenDoor();
+            keyInventory.hasDoorLockedKey = true;
             navMeshAgent.stoppingDistance = 1.5f;
             initialState = AiStateId.ChasePlayer;
             stateMachine.changeState(initialState);
@@ -110,10 +119,11 @@ public class AiAgent : MonoBehaviour
             initialState = AiStateId.Dance;
             stateMachine.changeState(initialState);
         }
-        // else if(other.gameObject.CompareTag("Player"))
-        // {
-        //     keyInventory.hasDoorLockedKey = false;
-        //     hasDoorLockedKey = true;
-        // }
+        else if (other.gameObject.CompareTag("Blind_Bullet"))
+        {
+            // Debug.Log("Bedo");
+            initialState = AiStateId.Blind;
+            stateMachine.changeState(initialState);
+        }
     }
 }

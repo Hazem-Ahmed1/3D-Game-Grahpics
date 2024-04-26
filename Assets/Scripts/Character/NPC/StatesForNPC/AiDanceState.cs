@@ -1,13 +1,10 @@
 using System.Collections;
-// using System.Collections.Generic;
-using System;
-// using TMPro;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
 
 public class AiDanceState : AiState
 {
-    private float danceStartTime;
+    // private float danceStartTime;
     public AiStateId GetId()
     {
         return AiStateId.Dance;
@@ -20,13 +17,12 @@ public class AiDanceState : AiState
         agent.Weapon.SetActive(false);
         agent.dance = true;
 
-        danceStartTime = Time.time;
+        // danceStartTime = Time.time;
         agent.StartCoroutine(TimeDance(agent));
     }
     public void Update(AiAgent agent)
     {
     }
-
     public void Exit(AiAgent agent)
     {
     }
@@ -41,4 +37,3 @@ public class AiDanceState : AiState
         agent.dance = false;
     }
 }
-
