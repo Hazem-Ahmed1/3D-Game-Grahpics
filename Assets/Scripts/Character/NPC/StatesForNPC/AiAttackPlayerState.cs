@@ -13,13 +13,11 @@ public class AiAttackPlayerState : AiState
     public void Enter(AiAgent agent)
     {
         agent.GetComponent<WeaponIK>().enabled = true;
-        // agent.GetComponent<AiWeapons>().enabled = true;
         agent.navMeshAgent.stoppingDistance = 5f;
-        // agent.StartCoroutine(ShootAtPlayer(agent));
     }
     public void Update(AiAgent agent)
     {
-        agent.navMeshAgent.destination = agent.PlayerTransform.position;
+        agent.navMeshAgent.destination = agent.PlayerTransform.transform.position;
         if (Time.time - lastShotTime >= shotDelay)
         {
             ShootAtPlayer(agent);
@@ -30,7 +28,6 @@ public class AiAttackPlayerState : AiState
     public void Exit(AiAgent agent)
     {
         agent.GetComponent<WeaponIK>().enabled = false;
-        // agent.GetComponent<AiWeapons>().enabled = false;
         agent.navMeshAgent.stoppingDistance = 0;
     }
 

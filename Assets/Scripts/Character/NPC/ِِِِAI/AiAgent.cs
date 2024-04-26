@@ -10,18 +10,23 @@ public class AiAgent : MonoBehaviour
     [HideInInspector]
     public NavMeshAgent navMeshAgent;
     public AiAgentConfig config;
-    public KeyDoorController keyDoorController;
 
-    [HideInInspector] public Transform PlayerTransform;
-    [HideInInspector] public Transform KeyTransform;
+    public KeyDoorController keyDoorController;
+    public KeyInventory keyInventory;
+
+    [HideInInspector] public GameObject PlayerTransform;
+    [HideInInspector] public GameObject KeyTransform;
     [HideInInspector] public Transform FinalGoalTransform;
+    [HideInInspector] public Animator animator;
     // public AiLocomotion aiLocomotion;
     public GameObject Weapon;
     // public GameObject NPC;
     public GameObject RigLayer;
-    public Animator animator;
+    
+    // public Animator animatorDozzy;
     public bool hasDoorLockedKey = false;
     public bool IsOpen = false;
+    public bool dance = false;
     private float distancePlayer;
 
     // for weapon
@@ -33,11 +38,11 @@ public class AiAgent : MonoBehaviour
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
         stateMachine = new AiStateMachine(this);
-        PlayerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        PlayerTransform = GameObject.FindGameObjectWithTag("Player");
         FinalGoalTransform = GameObject.Find("LockedDoor").transform;
-        KeyTransform = GameObject.Find("KeyDoor").transform;
-        // keyDoorController = GameObject.Find("LockedDoor").GetComponent<KeyDoorController>();
+        KeyTransform = GameObject.Find("KeyDoor");
 
         // Create instance from this state
         stateMachine.RegisterState(new AiGetKeyState());
@@ -45,6 +50,7 @@ public class AiAgent : MonoBehaviour
         stateMachine.RegisterState(new AiGoToFinalGoalState());
         stateMachine.RegisterState(new AiDanceState());
         stateMachine.RegisterState(new AiAttackPlayerState());
+        stateMachine.RegisterState(new AiStealState());
         // stateMachine.RegisterState(new AiDeathState());
         initialState = AiStateId.goToKey;
         stateMachine.changeState(initialState);
@@ -53,19 +59,28 @@ public class AiAgent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        distancePlayer = Vector3.Distance(PlayerTransform.position, this.gameObject.transform.position);
-        if (!hasDoorLockedKey)
+        distancePlayer = Vector3.Distance(PlayerTransform.transform.position, this.gameObject.transform.position);
+        float layerWeight = PlayerTransform.GetComponentInChildren<Animator>().GetLayerWeight(3);
+
+        if (!hasDoorLockedKey && KeyTransform != null)
         {
             initialState = AiStateId.goToKey;
         }
         if (hasDoorLockedKey)
         {
-            initialState = AiStateId.goToKey;
+            initialState = AiStateId.goToFinalGoal;
         }
-        if (distancePlayer <= 15f && !hasDoorLockedKey)
+        if (distancePlayer <= 10f && !hasDoorLockedKey && !dance)
         {
             initialState = AiStateId.AttackPlayer;
-            // StartCoroutine(Shot());
+        }
+        if (keyInventory.hasDoorLockedKey && distancePlayer >= 3f )
+        {
+            initialState = AiStateId.ChasePlayer;
+        }
+        if (keyInventory.hasDoorLockedKey && distancePlayer < 3f )
+        {
+            initialState = AiStateId.StealKey;
         }
         stateMachine.changeState(initialState);
         stateMachine.Update();
@@ -95,5 +110,10 @@ public class AiAgent : MonoBehaviour
             initialState = AiStateId.Dance;
             stateMachine.changeState(initialState);
         }
+        // else if(other.gameObject.CompareTag("Player"))
+        // {
+        //     keyInventory.hasDoorLockedKey = false;
+        //     hasDoorLockedKey = true;
+        // }
     }
 }
