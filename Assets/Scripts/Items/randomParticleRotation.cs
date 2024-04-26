@@ -6,6 +6,10 @@ public class randomParticleRotation : MonoBehaviour {
 	public bool y=false;
 	public bool z=false;
 	
+	void Awake()
+	{
+		Destroy(this.gameObject,5);
+	}
 	void OnEnable() {
 		if (x) {
 			this.transform.localEulerAngles += new Vector3 (Random.value * 360f,0f,0f);
