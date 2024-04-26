@@ -4,21 +4,36 @@ using UnityEngine;
 
 public class AiAttackPlayerState : AiState
 {
+    private float lastShotTime = 0f;
+    private float shotDelay = 2f; // 2-second delay between shots
     public AiStateId GetId()
     {
-        throw new System.NotImplementedException();
+        return AiStateId.AttackPlayer;
     }
     public void Enter(AiAgent agent)
     {
-        throw new System.NotImplementedException();
+        agent.GetComponent<WeaponIK>().enabled = true;
+        agent.navMeshAgent.stoppingDistance = 5f;
     }
     public void Update(AiAgent agent)
     {
-        throw new System.NotImplementedException();
+        agent.navMeshAgent.destination = agent.PlayerTransform.transform.position;
+        if (Time.time - lastShotTime >= shotDelay)
+        {
+            ShootAtPlayer(agent);
+            lastShotTime = Time.time;
+        }
     }
 
     public void Exit(AiAgent agent)
     {
-        throw new System.NotImplementedException();
+        agent.GetComponent<WeaponIK>().enabled = false;
+        agent.navMeshAgent.stoppingDistance = 0;
+    }
+
+    private void ShootAtPlayer(AiAgent agent)
+    {
+            var bullet = AiAgent.Instantiate(agent.bulletPrefab, agent.bulletSpawnPoint.position, agent.bulletSpawnPoint.rotation);
+            bullet.GetComponent<Rigidbody>().velocity = agent.bulletSpawnPoint.forward * agent.bulletSpeed;
     }
 }

@@ -5,8 +5,12 @@ public class Maketornado : MonoBehaviour
     public GameObject tornado;
     public void OnTriggerEnter(Collider other)
     {
-        Instantiate(tornado , this.transform.position , Quaternion.identity);
-        Destroy(this.gameObject);
+        if (other.CompareTag("OJB"))
+        {
+            Instantiate(tornado , this.transform.position , Quaternion.identity);
+            // Destroy(tornado,5);
+            Destroy(this.gameObject);
+        }
     }
 }
 

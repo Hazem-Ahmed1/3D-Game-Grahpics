@@ -11,7 +11,10 @@ TagManager:
   - OJB
   - Key
   - Bullet_Dancing
+  - Blind_Bullet
   - Inventory
+  - DoorGoal
+  - BulletTornado
   layers:
   - Default
   - TransparentFX

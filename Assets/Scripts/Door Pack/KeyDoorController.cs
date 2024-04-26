@@ -53,7 +53,7 @@ public class KeyDoorController : MonoBehaviour
             StartCoroutine(ShowDoorLocked());
         }
     }
-    void OpenDoor()
+    public void OpenDoor()
     {
         if (!doorOpen && !pauseInteraction)
         {
@@ -71,7 +71,7 @@ public class KeyDoorController : MonoBehaviour
             doorAnim.Play(closeAnimationName, 0, 0.0f);
             doorOpen = false;
             StartCoroutine(PauseDoorInteraction());
-            Physics.IgnoreLayerCollision(7,3, false);
+            Physics.IgnoreLayerCollision(7,3, true);
         }
     }
     IEnumerator ShowDoorLocked()

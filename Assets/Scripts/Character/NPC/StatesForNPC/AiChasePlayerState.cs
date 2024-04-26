@@ -22,17 +22,17 @@ public class AiChasePlayerState : AiState
         timer -= Time.deltaTime;
         if (!agent.navMeshAgent.hasPath)
         {
-            agent.navMeshAgent.destination = agent.PlayerTransform.position;
+            agent.navMeshAgent.destination = agent.PlayerTransform.transform.position;
         }
         if (timer < 0.0f)
         {
-            Vector3 direction = (agent.PlayerTransform.position - agent.navMeshAgent.destination);
+            Vector3 direction = (agent.PlayerTransform.transform.position - agent.navMeshAgent.destination);
             direction.y = 0;
             if (direction.sqrMagnitude > agent.config.maxDistance * agent.config.maxDistance)
             {
                 if (agent.navMeshAgent.pathStatus != NavMeshPathStatus.PathPartial)
                 {
-                    agent.navMeshAgent.destination = agent.PlayerTransform.position;
+                    agent.navMeshAgent.destination = agent.PlayerTransform.transform.position;
                 }
             }
             timer = agent.config.maxTime;
