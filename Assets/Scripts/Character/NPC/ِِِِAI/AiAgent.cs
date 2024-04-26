@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Animations.Rigging;
 
 public class AiAgent : MonoBehaviour
 {
@@ -53,6 +54,7 @@ public class AiAgent : MonoBehaviour
         stateMachine.RegisterState(new AiGoToFinalGoalState());
         stateMachine.RegisterState(new AiDanceState());
         stateMachine.RegisterState(new AiBlindState());
+        stateMachine.RegisterState(new AiFreezeState());
         stateMachine.RegisterState(new AiAttackPlayerState());
         stateMachine.RegisterState(new AiStealState());
         // stateMachine.RegisterState(new AiDeathState());
@@ -98,6 +100,7 @@ public class AiAgent : MonoBehaviour
         if (other.gameObject.name.Equals("KeyDoor"))
         {
             hasDoorLockedKey = true;
+            // keyInventory.hasDoorLockedKey = false;
             initialState = AiStateId.goToFinalGoal;
             stateMachine.changeState(initialState);
             Destroy(other.gameObject);
@@ -107,7 +110,7 @@ public class AiAgent : MonoBehaviour
         {
             // print("Bedo");
             keyDoorController.OpenDoor();
-            keyInventory.hasDoorLockedKey = true;
+            // keyInventory.hasDoorLockedKey = true;
             navMeshAgent.stoppingDistance = 1.5f;
             initialState = AiStateId.ChasePlayer;
             stateMachine.changeState(initialState);
@@ -125,5 +128,17 @@ public class AiAgent : MonoBehaviour
             initialState = AiStateId.Blind;
             stateMachine.changeState(initialState);
         }
+        else if (other.gameObject.CompareTag("BulletTornado"))
+        {
+            Debug.Log("Bedo");
+            initialState = AiStateId.Freeze;
+            stateMachine.changeState(initialState);
+        }
     }
+    // IEnumerator DestroyAfterDelay(float delay)
+    // {
+    //     navMeshAgent.speed = 0;
+    //     yield return new WaitForSeconds(delay);
+    //     // navMeshAgent.speed = 7;
+    // }
 }

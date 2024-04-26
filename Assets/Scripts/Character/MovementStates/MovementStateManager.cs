@@ -51,14 +51,14 @@ public class MovementStateManager : MonoBehaviour
         Gravity();
         anim.SetFloat("hInput", hzInput);
         anim.SetFloat("vInput", vInput);
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            StartRandomMovement();
-        }
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            EndRandomMovement();
-        }
+        // if (Input.GetKeyDown(KeyCode.J))
+        // {
+        //     StartRandomMovement();
+        // }
+        // if (Input.GetKeyDown(KeyCode.K))
+        // {
+        //     EndRandomMovement();
+        // }
 
     }
 
@@ -110,5 +110,20 @@ public class MovementStateManager : MonoBehaviour
         float randomSpeed = Random.Range(0.5f, 1f);
         Vector3 moveVector = randomDirection * currentMovementSpeed * randomSpeed * Time.deltaTime;
         characterController.Move(moveVector);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Bedo");
+        if (other.CompareTag("BulletTornado"))
+        {
+            StartRandomMovement();
+            StartCoroutine(tornadoTime());
+        }
+    }
+    IEnumerator tornadoTime(){
+
+        yield return new WaitForSeconds(5);
+        EndRandomMovement();
     }
 }

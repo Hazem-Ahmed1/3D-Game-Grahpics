@@ -7283,7 +7283,7 @@ GameObject:
   - component: {fileID: 6169283487460704422}
   m_Layer: 3
   m_Name: Jollian
-  m_TagString: Untagged
+  m_TagString: OJB
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7419,6 +7419,7 @@ MonoBehaviour:
   hasDoorLockedKey: 0
   IsOpen: 0
   dance: 0
+  Blind: 0
   bulletSpawnPoint: {fileID: 7986125558599104945}
   bulletPrefab: {fileID: 2257979435688676814, guid: 4ee58e0f74e75294db3519c5cd64a969, type: 3}
   bulletSpeed: 50
