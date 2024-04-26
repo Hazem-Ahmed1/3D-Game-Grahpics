@@ -18,6 +18,7 @@ public class AiDanceState : AiState
         agent.animator.SetLayerWeight(1,1);
         agent.RigLayer.GetComponent<Rig>().weight = 0;
         agent.Weapon.SetActive(false);
+        agent.dance = true;
 
         danceStartTime = Time.time;
         agent.StartCoroutine(TimeDance(agent));
@@ -37,6 +38,7 @@ public class AiDanceState : AiState
         agent.RigLayer.GetComponent<Rig>().weight = 1;
         agent.Weapon.SetActive(true);
         agent.initialState = AiStateId.ChasePlayer;
+        agent.dance = false;
     }
 }
 

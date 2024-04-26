@@ -22,21 +22,29 @@ public class AiGetKeyState : AiState
         timer -= Time.deltaTime;
         if (!agent.navMeshAgent.hasPath)
         {
-            agent.navMeshAgent.destination = agent.KeyTransform.position;
+            if (agent.KeyTransform != null){
+                agent.navMeshAgent.destination = agent.KeyTransform.transform.position;
+            }
         }
         if (timer < 0.0f)
         {
-            Vector3 direction = (agent.KeyTransform.position - agent.navMeshAgent.destination);
-            direction.y = 0;
-            if (direction.sqrMagnitude > agent.config.maxDistance * agent.config.maxDistance)
+            if (agent.KeyTransform != null)
             {
-                if (agent.navMeshAgent.pathStatus != NavMeshPathStatus.PathPartial)
+                Vector3 direction = (agent.KeyTransform.transform.position - agent.navMeshAgent.destination);
+                direction.y = 0;
+                if (direction.sqrMagnitude > agent.config.maxDistance * agent.config.maxDistance)
                 {
-                    agent.navMeshAgent.destination = agent.KeyTransform.position;
+                    if (agent.navMeshAgent.pathStatus != NavMeshPathStatus.PathPartial)
+                    {
+                        agent.navMeshAgent.destination = agent.KeyTransform.transform.position;
+                    }
                 }
+                timer = agent.config.maxTime;
             }
-            
-            timer = agent.config.maxTime;
+            else
+            {
+                return;
+            }
         }
     }
 

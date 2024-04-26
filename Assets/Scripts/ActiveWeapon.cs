@@ -6,6 +6,7 @@ using UnityEngine.Animations;
 
 public class ActiveWeapon : MonoBehaviour
 {
+    [HideInInspector]
     public RayCastWeapon weapon;
     public Transform crossHairTarget;
     public UnityEngine.Animations.Rigging.Rig HandIK;
