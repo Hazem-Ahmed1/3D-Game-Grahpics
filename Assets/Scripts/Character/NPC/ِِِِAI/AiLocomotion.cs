@@ -22,6 +22,7 @@ public class AiLocomotion : MonoBehaviour
         {
             animator.SetFloat("Speed", agent.velocity.magnitude);
         }else{
+            // Debug.Log("Bedo");
             animator.SetFloat("Speed",0);
         }
     }

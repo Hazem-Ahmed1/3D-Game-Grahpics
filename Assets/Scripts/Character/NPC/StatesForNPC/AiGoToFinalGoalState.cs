@@ -22,17 +22,21 @@ public class AiGoToFinalGoalState : AiState
         timer -= Time.deltaTime;
         if (!agent.navMeshAgent.hasPath)
         {
-            agent.navMeshAgent.destination = agent.FinalGoalTransform.position;
+            if (agent.FinalGoalTransform != null){
+                agent.navMeshAgent.destination = agent.FinalGoalTransform.position;
+                }
         }
         if (timer < 0.0f)
         {
-            Vector3 direction = (agent.FinalGoalTransform.position - agent.navMeshAgent.destination);
-            direction.y = 0;
-            if (direction.sqrMagnitude > agent.config.maxDistance * agent.config.maxDistance)
-            {
-                if (agent.navMeshAgent.pathStatus != NavMeshPathStatus.PathPartial)
+            if (agent.FinalGoalTransform != null){
+                Vector3 direction = (agent.FinalGoalTransform.position - agent.navMeshAgent.destination);
+                direction.y = 0;
+                if (direction.sqrMagnitude > agent.config.maxDistance * agent.config.maxDistance)
                 {
-                    agent.navMeshAgent.destination = agent.FinalGoalTransform.position;
+                    if (agent.navMeshAgent.pathStatus != NavMeshPathStatus.PathPartial)
+                    {
+                        agent.navMeshAgent.destination = agent.FinalGoalTransform.position;
+                    }
                 }
             }
             timer = agent.config.maxTime;

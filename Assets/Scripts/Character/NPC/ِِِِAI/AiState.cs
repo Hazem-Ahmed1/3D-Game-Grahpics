@@ -6,6 +6,7 @@ public enum AiStateId{
     goToKey,
     ChasePlayer,
     AttackPlayer,
+    goToDoorGoal,
     goToFinalGoal,
     Dance,
     Blind,

@@ -15,7 +15,7 @@ public class AiFreezeState : AiState
         // agent.animator.SetLayerWeight(2,1);
         agent.RigLayer.GetComponent<Rig>().weight = 0;
         agent.Weapon.SetActive(false);
-        agent.Blind = true;
+        agent.freeze = true;
 
         agent.StartCoroutine(FreezeTime(agent));
     }

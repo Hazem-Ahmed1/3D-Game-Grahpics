@@ -71,7 +71,7 @@ public class KeyDoorController : MonoBehaviour
             doorAnim.Play(closeAnimationName, 0, 0.0f);
             doorOpen = false;
             StartCoroutine(PauseDoorInteraction());
-            Physics.IgnoreLayerCollision(7,3, true);
+            Physics.IgnoreLayerCollision(7,3, false);
         }
     }
     IEnumerator ShowDoorLocked()
