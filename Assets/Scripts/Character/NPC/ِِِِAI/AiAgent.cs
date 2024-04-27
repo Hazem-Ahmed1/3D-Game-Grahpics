@@ -35,7 +35,7 @@ public class AiAgent : MonoBehaviour
 
     // for weapon
     public Transform bulletSpawnPoint;
-    public GameObject bulletPrefab;
+    public GameObject BulletTornado;
     public float bulletSpeed = 10;
 
     // Start is called before the first frame update

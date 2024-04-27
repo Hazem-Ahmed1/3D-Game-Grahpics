@@ -3,7 +3,21 @@ guid: 92d85a3696eb3dc4ba23ae5fee6ef4af
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - navMeshAgent: {instanceID: 0}
+  - config: {instanceID: 0}
+  - keyDoorController: {instanceID: 0}
+  - keyInventory: {instanceID: 0}
+  - KeyFlag: {instanceID: 0}
+  - BodyLight: {instanceID: 0}
+  - PlayerTransform: {instanceID: 0}
+  - KeyTransform: {instanceID: 0}
+  - FinalGoalTransform: {instanceID: 0}
+  - animator: {instanceID: 0}
+  - Weapon: {instanceID: 0}
+  - RigLayer: {instanceID: 0}
+  - bulletSpawnPoint: {instanceID: 0}
+  - BulletTornado: {fileID: 272537161718884170, guid: d850423550560024daa8c37ff94d1bdd, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

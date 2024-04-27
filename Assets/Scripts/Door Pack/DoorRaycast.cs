@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,6 +22,15 @@ public class DoorRaycast : MonoBehaviour
     private const string interactableTag = "DoorInteractiveObj";
 
 
+    public GameObject interactionUI;
+    public TextMeshProUGUI interactionText;
+
+
+    private void Start()
+    {
+        interactionUI.SetActive(false);
+
+    }
     private void Update()
     {
         RaycastHit hit;
@@ -30,8 +40,6 @@ public class DoorRaycast : MonoBehaviour
         // Debug.Log(1 << LayerMask.NameToLayer(ExcludeLayerName));
         // Debug.Log(layerMaskInteract.value);
         // Debug.Log("mask is : " + mask);
-
-
 
         if (Physics.Raycast(transform.position,fwd, out hit,RayLength,mask))
         {
@@ -68,13 +76,20 @@ public class DoorRaycast : MonoBehaviour
     {
         if(on && !DoOnce)
         {
-            CrossHair.color = Color.red;
+            interactionText.text = "press [E] to open";
+            interactionUI.SetActive(on);
+            CrossHair.enabled = false;
+
+            /*            CrossHair.color = Color.red;
+            */
         }
         else
         {
-            CrossHair.color = Color.white;
+            interactionUI.SetActive(false);
+            CrossHair.enabled = true;
             IsCrossHairActive = false;
 
         }
     }
+
 }
