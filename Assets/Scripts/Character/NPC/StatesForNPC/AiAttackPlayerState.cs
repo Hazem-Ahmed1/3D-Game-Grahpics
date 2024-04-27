@@ -33,7 +33,7 @@ public class AiAttackPlayerState : AiState
 
     private void ShootAtPlayer(AiAgent agent)
     {
-            var bullet = AiAgent.Instantiate(agent.bulletPrefab, agent.bulletSpawnPoint.position, agent.bulletSpawnPoint.rotation);
+            var bullet = AiAgent.Instantiate(agent.BulletTornado, agent.bulletSpawnPoint.position, agent.bulletSpawnPoint.rotation);
             bullet.GetComponent<Rigidbody>().velocity = agent.bulletSpawnPoint.forward * agent.bulletSpeed;
     }
 }
