@@ -12,7 +12,6 @@ public class AiFreezeState : AiState
     public void Enter(AiAgent agent)
     {
         agent.navMeshAgent.speed = 0;
-        // agent.animator.SetLayerWeight(2,1);
         agent.RigLayer.GetComponent<Rig>().weight = 0;
         agent.Weapon.SetActive(false);
         agent.Blind = true;
@@ -31,10 +30,8 @@ public class AiFreezeState : AiState
     {
         yield return new WaitForSeconds(5);
         agent.navMeshAgent.speed = 7;
-        // agent.animator.SetLayerWeight(2,0);
         agent.RigLayer.GetComponent<Rig>().weight = 1;
         agent.Weapon.SetActive(true);
-        // agent.initialState = AiStateId.ChasePlayer;
         agent.Blind = false;
     }
 }

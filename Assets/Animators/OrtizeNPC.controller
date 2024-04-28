@@ -97,7 +97,7 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -114,7 +114,7 @@ AnimatorController:
   - serializedVersion: 5
     m_Name: Dance
     m_StateMachine: {fileID: 4185528819249528408}
-    m_Mask: {fileID: 0}
+    m_Mask: {fileID: 31900000, guid: 1a82ac05a1c813a41962b7edfa295d6b, type: 2}
     m_Motions: []
     m_Behaviours: []
     m_BlendingMode: 0
@@ -126,7 +126,7 @@ AnimatorController:
   - serializedVersion: 5
     m_Name: Blind
     m_StateMachine: {fileID: 8357846755456889348}
-    m_Mask: {fileID: 0}
+    m_Mask: {fileID: 31900000, guid: 6f4b2d865644a40438927b461a95bec1, type: 2}
     m_Motions: []
     m_Behaviours: []
     m_BlendingMode: 0
