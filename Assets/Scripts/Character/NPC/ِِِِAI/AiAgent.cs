@@ -27,17 +27,12 @@ public class AiAgent : MonoBehaviour
     [HideInInspector] public GameObject FinalDoorTransform;
     [HideInInspector] public Transform GoalTransform;
     [HideInInspector] public Animator animator;
-    // public AiLocomotion aiLocomotion;
     public GameObject Weapon;
-    // public GameObject NPC;
     public GameObject RigLayer;
-    
-    // public Animator animatorDozzy;
     public bool hasDoorLockedKey = false;
     public bool IsOpen = false;
     public bool dance = false;
     public bool Blind = false;
-    // public bool freeze = false;
     public bool snatcher = false;
     public bool getGoal = true;
     private float distancePlayer;
@@ -70,7 +65,7 @@ public class AiAgent : MonoBehaviour
         stateMachine.RegisterState(new AiFreezeState());
         stateMachine.RegisterState(new AiAttackPlayerState());
         stateMachine.RegisterState(new AiStealState());
-        // stateMachine.RegisterState(new AiDeathState());
+
         initialState = AiStateId.goToKey;
         stateMachine.changeState(initialState);
         KeyFlag.active = hasDoorLockedKey? true : false;
@@ -122,6 +117,12 @@ public class AiAgent : MonoBehaviour
         }
         stateMachine.changeState(initialState);
         stateMachine.Update();
+        if (navMeshAgent.hasPath)
+        {
+            animator.SetFloat("Speed", navMeshAgent.velocity.magnitude);
+        }else{
+            animator.SetFloat("Speed",0);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -129,7 +130,6 @@ public class AiAgent : MonoBehaviour
         if (other.gameObject.name.Equals("KeyDoor"))
         {
             hasDoorLockedKey = true;
-            // keyInventory.hasDoorLockedKey = false;
             initialState = AiStateId.goToDoorGoal;
             stateMachine.changeState(initialState);
             Destroy(other.gameObject);

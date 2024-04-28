@@ -11,8 +11,6 @@ public class AiStealState : AiState
     public float detectionDuration = 5f; // The time (in seconds) the player must remain within the detection range
 
     private float detectionTimer = 0f; // The timer for tracking the detection duration
-    // private float preSpeed = 0f;
-    // private TimerKey timerKey;
     private bool inRange = false;
     
     public int Duration;
@@ -24,7 +22,6 @@ public class AiStealState : AiState
     public void Enter(AiAgent agent)
     {
         agent.navMeshAgent.stoppingDistance = 3;
-        // agent.navMeshAgent.speed = 0;
     }
     public void Update(AiAgent agent)
     {
@@ -40,6 +37,7 @@ public class AiStealState : AiState
                     Duration = 5;
                     remainingDuration = 5;
                     inRange = true;
+                    agent.UIFill.fillAmount = 1f;
                     agent.StartCoroutine(UpdateTimer(agent));
                 }
                 // If the player has remained within the detection range for the required duration
@@ -47,14 +45,14 @@ public class AiStealState : AiState
                 {
                     agent.keyInventory.hasDoorLockedKey = false;
                     agent.hasDoorLockedKey = true;
-                    // Debug.Log("Player is near the enemy for at least 3 seconds.");
+                    detectionTimer = 0f;
                 }
             }
             else
             {
-                Debug.Log("out");
                 detectionTimer = 0f;
                 inRange = false;
+                agent.UIFill.fillAmount = 1f;
             }
     }
     public void Exit(AiAgent agent)
