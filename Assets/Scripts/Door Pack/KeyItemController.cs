@@ -7,7 +7,7 @@ public class KeyItemController : MonoBehaviour
     [SerializeField] private bool Door = false;
     [SerializeField] private bool Key = false;
     [HideInInspector] private KeyInventory PlayerInventory = null;
-    [SerializeField]GameObject Player;
+    [HideInInspector]GameObject Player;
     private float distancePlayer;
     private KeyDoorController doorObject;
 
@@ -16,6 +16,7 @@ public class KeyItemController : MonoBehaviour
 
     private void Start()
     {
+        Player = GameObject.Find("Duzzy");
         if (Door)
         {
             doorObject = GetComponent<KeyDoorController>();
@@ -24,6 +25,7 @@ public class KeyItemController : MonoBehaviour
         }
     }
     private void Update(){
+        Player = GameObject.Find("Duzzy");
         audioSource = GameObject.Find("Audio Source").GetComponent<AudioSource>();
         PlayerInventory = Player.GetComponentInChildren<KeyInventory>();
     }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class KeyDoorController : MonoBehaviour
@@ -17,10 +18,17 @@ public class KeyDoorController : MonoBehaviour
     [SerializeField] private bool pauseInteraction = false;
     [SerializeField] private AudioSource audioSource = null;
     [SerializeField] private AudioClip audioClip = null;
-
     private void Awake()
     {
         doorAnim = gameObject.GetComponent<Animator>();
+        Player = GameObject.Find("Duzzy");
+        PlayerInventory = Player.GetComponentInChildren<KeyInventory>();
+        audioSource = GameObject.Find("Audio Source").GetComponent<AudioSource>();
+    }
+    void Update(){
+        Player = GameObject.Find("Duzzy");
+        audioSource = GameObject.Find("Audio Source").GetComponent<AudioSource>();
+        PlayerInventory = Player.GetComponentInChildren<KeyInventory>();
     }
 
     private IEnumerator PauseDoorInteraction()
