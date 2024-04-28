@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Animations.Rigging;
+using UnityEngine.UI;
 
 public class AiAgent : MonoBehaviour
 {
+    [SerializeField] public Image UIFill;
     public AiStateMachine stateMachine;
     public AiStateId initialState;
     [HideInInspector]
@@ -99,8 +101,8 @@ public class AiAgent : MonoBehaviour
         }
         if (hasDoorLockedKey && !snatcher)
         {
+            navMeshAgent.stoppingDistance = 0;
             initialState = AiStateId.goToFinalGoal;
-            // getGoal = true;
         }
         if (distancePlayer <= 10f && !hasDoorLockedKey && !dance && !Blind && !snatcher)
         {
@@ -110,7 +112,7 @@ public class AiAgent : MonoBehaviour
         {
             initialState = AiStateId.ChasePlayer;
         }
-        if (keyInventory.hasDoorLockedKey && distancePlayer < 5f && dance && !snatcher)
+        if (keyInventory.hasDoorLockedKey && distancePlayer < 7f && !dance && !snatcher)
         {
             initialState = AiStateId.StealKey;
         }
@@ -137,44 +139,25 @@ public class AiAgent : MonoBehaviour
         {
             Debug.Log("Bedo");
             doorController.PlayAnimation();
-            // keyInventory.hasDoorLockedKey = true;
-            // navMeshAgent.stoppingDistance = 1.5f;
-            // initialState = AiStateId.ChasePlayer;
-            // stateMachine.changeState(initialState);
-            // Physics.IgnoreLayerCollision(3,7);
             IsOpen = true;
         }
         else if (other.gameObject.name.Equals("FinalGoal"))
         {
-            // print("Bedo");
-            // doorController.PlayAnimation();
-            // keyInventory.hasDoorLockedKey = true;
-            // navMeshAgent.stoppingDistance = 1.5f;
-            // initialState = AiStateId.ChasePlayer;
-            // stateMachine.changeState(initialState);
-            // Physics.IgnoreLayerCollision(3,7);
-            // IsOpen = true;
             Destroy(other.gameObject);
             scoreNPC++;
             Debug.Log(scoreNPC);
         }
         else if (other.gameObject.name.Equals("Goal"))
         {
-            // getGoal = false;
             Destroy(other.gameObject);
             scoreNPC++;
             Debug.Log(scoreNPC);
         }
         else if (other.gameObject.CompareTag("DoorGoal") && hasDoorLockedKey && !IsOpen)
         {
-            // print("Bedo");
             keyDoorController.OpenDoor();
-            // keyInventory.hasDoorLockedKey = true;
             getGoal = true;
             navMeshAgent.stoppingDistance = 0f;
-            // initialState = AiStateId.goToFinalGoal;
-            // stateMachine.changeState(initialState);
-            // Physics.IgnoreLayerCollision(3,7);
             IsOpen = true;
         }
         else if (other.gameObject.CompareTag("Bullet_Dancing"))
@@ -184,7 +167,6 @@ public class AiAgent : MonoBehaviour
         }
         else if (other.gameObject.CompareTag("Blind_Bullet"))
         {
-            // Debug.Log("Bedo");
             initialState = AiStateId.Blind;
             stateMachine.changeState(initialState);
         }
