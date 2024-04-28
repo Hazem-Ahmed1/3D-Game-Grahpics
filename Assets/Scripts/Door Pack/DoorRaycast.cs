@@ -9,38 +9,23 @@ public class DoorRaycast : MonoBehaviour
     [SerializeField] private int RayLength = 5;
     [SerializeField] private LayerMask layerMaskInteract;
     [SerializeField] private string ExcludeLayerName = null;
-
     private DoorController RayCastedObj;
     [SerializeField] private KeyCode OpenDoorKey = KeyCode.E;
-
-    // private KeyItemController raycastedObject;
-    // [SerializeField] private KeyCode DoorKey = KeyCode.F;
-        
     [SerializeField] private Image CrossHair = null;
     private bool IsCrossHairActive;
     private bool DoOnce;
     private const string interactableTag = "DoorInteractiveObj";
-
-
     public GameObject interactionUI;
     public TextMeshProUGUI interactionText;
-
-
     private void Start()
     {
         interactionUI.SetActive(false);
-
     }
     private void Update()
     {
         RaycastHit hit;
         Vector3 fwd = transform.TransformDirection(Vector3.forward);
-
         int mask = 1 << LayerMask.NameToLayer(ExcludeLayerName) | layerMaskInteract.value;
-        // Debug.Log(1 << LayerMask.NameToLayer(ExcludeLayerName));
-        // Debug.Log(layerMaskInteract.value);
-        // Debug.Log("mask is : " + mask);
-
         if (Physics.Raycast(transform.position,fwd, out hit,RayLength,mask))
         {
             if(hit.collider.CompareTag(interactableTag))
@@ -50,18 +35,14 @@ public class DoorRaycast : MonoBehaviour
                     RayCastedObj = hit.collider.gameObject.GetComponent<DoorController>();
                     CrossHairChange(true);
                 }
-
                 IsCrossHairActive = true;
                 DoOnce = true; 
-
                 if(Input.GetKeyDown(OpenDoorKey))
                 {
                     RayCastedObj.PlayAnimation();
-
                 }
             }
         }
-
         else
         {
             if(IsCrossHairActive)
@@ -71,25 +52,19 @@ public class DoorRaycast : MonoBehaviour
             }
         }
     }
-
     void CrossHairChange(bool on)
     {
         if(on && !DoOnce)
         {
-            interactionText.text = "press [E] to open";
+            interactionText.text = "press";
             interactionUI.SetActive(on);
             CrossHair.enabled = false;
-
-            /*            CrossHair.color = Color.red;
-            */
         }
         else
         {
             interactionUI.SetActive(false);
             CrossHair.enabled = true;
             IsCrossHairActive = false;
-
         }
     }
-
 }

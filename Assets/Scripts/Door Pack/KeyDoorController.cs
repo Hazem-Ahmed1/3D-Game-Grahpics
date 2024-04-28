@@ -6,22 +6,15 @@ public class KeyDoorController : MonoBehaviour
 {
     private Animator doorAnim;
     private float distancePlayer;
-    private float distanceEnemy;
     [SerializeField]GameObject Player;
-    // [SerializeField]GameObject Enemy;
     private bool doorOpen = false;
-    
-    // [Header("Animation Names")]
     [SerializeField] private string openAnimationName = "OpenDoor";
     [SerializeField] private string closeAnimationName = "CloseDoor";
     [SerializeField] private int  TimeLockedUI = 1;
     [SerializeField] private GameObject showDoorLockedUI = null;
-    // [SerializeField]private KeyInventory EnemyInventory;
     [SerializeField]private KeyInventory PlayerInventory;
     [SerializeField] private int waitTimerAnimation = 1;
     [SerializeField] private bool pauseInteraction = false;
-    // [SerializeField] private AudioSource audioSource = null;
-    // [SerializeField] private AudioClip audioClip = null;
 
     private void Awake()
     {
@@ -37,18 +30,11 @@ public class KeyDoorController : MonoBehaviour
     public void PlayAnimation()
     {
         distancePlayer = Vector3.Distance(Player.gameObject.transform.position, this.gameObject.transform.position);
-        // distanceEnemy = Vector3.Distance(Enemy.gameObject.transform.position, this.gameObject.transform.position);
-
-        // if (EnemyInventory.hasDoorLockedKey && distanceEnemy <= 5)
-        // {
-        //     OpenDoor();
-        // }
-        // else
-        if (PlayerInventory.hasDoorLockedKey && distancePlayer <= 5)
+        if (PlayerInventory.hasDoorLockedKey && distancePlayer <= 5 )
         {
             OpenDoor();
         }
-        else
+        else if(!PlayerInventory.hasDoorLockedKey && distancePlayer <= 5 && !doorOpen)
         {
             StartCoroutine(ShowDoorLocked());
         }
