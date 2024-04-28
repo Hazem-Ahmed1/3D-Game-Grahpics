@@ -4738,13 +4738,15 @@ ParticleSystemRenderer:
   m_RenderAlignment: 0
   m_Pivot: {x: 0, y: 0, z: 0}
   m_Flip: {x: 0, y: 0, z: 0}
-  m_UseCustomVertexStreams: 0
   m_EnableGPUInstancing: 0
   m_ApplyActiveColorSpace: 0
   m_AllowRoll: 1
   m_FreeformStretching: 0
   m_RotateWithStretchDirection: 1
+  m_UseCustomVertexStreams: 0
   m_VertexStreams: 0001030405
+  m_UseCustomTrailVertexStreams: 0
+  m_TrailVertexStreams: 00010304
   m_Mesh: {fileID: 0}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
@@ -5440,7 +5442,7 @@ GameObject:
   - component: {fileID: 4028338535998247217}
   m_Layer: 3
   m_Name: mixamorig:Hips
-  m_TagString: Untagged
+  m_TagString: OJB
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7283,7 +7285,7 @@ GameObject:
   - component: {fileID: 6169283487460704422}
   m_Layer: 3
   m_Name: Jollian
-  m_TagString: OJB
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7339,7 +7341,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 5
+  m_Speed: 6.5
   m_Acceleration: 40
   avoidancePriority: 50
   m_AngularSpeed: 720
@@ -7407,12 +7409,15 @@ MonoBehaviour:
   navMeshAgent: {fileID: 0}
   config: {fileID: 11400000, guid: 93e4cbae99a0023428edd33b66849e18, type: 2}
   keyDoorController: {fileID: 0}
+  doorController: {fileID: 0}
   keyInventory: {fileID: 0}
   KeyFlag: {fileID: 3164605856623729789}
   BodyLight: {fileID: 1624186947120359545}
   PlayerTransform: {fileID: 0}
   KeyTransform: {fileID: 0}
   FinalGoalTransform: {fileID: 0}
+  FinalDoorTransform: {fileID: 0}
+  GoalTransform: {fileID: 0}
   animator: {fileID: 2571042812704987702}
   Weapon: {fileID: 7733906036084177534}
   RigLayer: {fileID: 7228070708570753396}
@@ -7420,8 +7425,10 @@ MonoBehaviour:
   IsOpen: 0
   dance: 0
   Blind: 0
+  snatcher: 0
+  getGoal: 1
   bulletSpawnPoint: {fileID: 7986125558599104945}
-  bulletPrefab: {fileID: 2257979435688676814, guid: 4ee58e0f74e75294db3519c5cd64a969, type: 3}
+  BulletTornado: {fileID: 2257979435688676814, guid: 4ee58e0f74e75294db3519c5cd64a969, type: 3}
   bulletSpeed: 50
 --- !u!114 &4722469230389472003
 MonoBehaviour:
@@ -13627,13 +13634,15 @@ ParticleSystemRenderer:
   m_RenderAlignment: 0
   m_Pivot: {x: 0, y: 0, z: 0}
   m_Flip: {x: 0, y: 0, z: 0}
-  m_UseCustomVertexStreams: 0
   m_EnableGPUInstancing: 0
   m_ApplyActiveColorSpace: 0
   m_AllowRoll: 1
   m_FreeformStretching: 0
   m_RotateWithStretchDirection: 1
+  m_UseCustomVertexStreams: 0
   m_VertexStreams: 0001030405
+  m_UseCustomTrailVertexStreams: 0
+  m_TrailVertexStreams: 00010304
   m_Mesh: {fileID: 0}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}

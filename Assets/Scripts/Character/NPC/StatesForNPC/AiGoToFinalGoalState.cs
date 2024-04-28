@@ -12,6 +12,15 @@ public class AiGoToFinalGoalState : AiState
     }
     public void Enter(AiAgent agent)
     {
+        if (!agent.navMeshAgent.hasPath)
+        {
+            if (agent.FinalGoalTransform != null && agent.snatcher){
+                agent.navMeshAgent.destination = agent.FinalGoalTransform.position;
+            }
+            else if (agent.GoalTransform != null && !agent.snatcher){
+                agent.navMeshAgent.destination = agent.GoalTransform.position;
+            }
+        }
     }
     public void Update(AiAgent agent)
     {
@@ -20,25 +29,42 @@ public class AiGoToFinalGoalState : AiState
             return;
         }
         timer -= Time.deltaTime;
-        if (!agent.navMeshAgent.hasPath)
-        {
-            agent.navMeshAgent.destination = agent.FinalGoalTransform.position;
-        }
-        if (timer < 0.0f)
-        {
-            Vector3 direction = (agent.FinalGoalTransform.position - agent.navMeshAgent.destination);
-            direction.y = 0;
-            if (direction.sqrMagnitude > agent.config.maxDistance * agent.config.maxDistance)
+        
+        if (agent.GoalTransform != null && !agent.snatcher){
+            if (timer < 0.0f)
             {
-                if (agent.navMeshAgent.pathStatus != NavMeshPathStatus.PathPartial)
+                Vector3 direction = agent.GoalTransform.position - agent.navMeshAgent.destination;
+                direction.y = 0;
+                if (direction.sqrMagnitude > agent.config.maxDistance * agent.config.maxDistance)
                 {
-                    agent.navMeshAgent.destination = agent.FinalGoalTransform.position;
+                    if (agent.navMeshAgent.pathStatus != NavMeshPathStatus.PathPartial)
+                    {
+                        agent.navMeshAgent.destination = agent.GoalTransform.position;
+                    }
                 }
+                timer = agent.config.maxTime;
             }
-            timer = agent.config.maxTime;
+        }
+        else if (agent.FinalGoalTransform != null && agent.snatcher)
+        {
+            if (timer < 0.0f)
+            {
+                Vector3 direction = agent.FinalGoalTransform.position - agent.navMeshAgent.destination;
+                direction.y = 0;
+                if (direction.sqrMagnitude > agent.config.maxDistance * agent.config.maxDistance)
+                {
+                    if (agent.navMeshAgent.pathStatus != NavMeshPathStatus.PathPartial)
+                    {
+                        agent.navMeshAgent.destination = agent.FinalGoalTransform.position;
+                    }
+                }
+                timer = agent.config.maxTime;
+            }
+        }else
+        {
+            return;
         }
     }
-
     public void Exit(AiAgent agent)
     {
     }

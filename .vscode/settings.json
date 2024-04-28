@@ -56,6 +56,6 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "gfx-3D-Game.sln",
+    "dotnet.defaultSolution": "3D-Game-Grahpics.sln",
     "dotnet.preferCSharpExtension": true
 }

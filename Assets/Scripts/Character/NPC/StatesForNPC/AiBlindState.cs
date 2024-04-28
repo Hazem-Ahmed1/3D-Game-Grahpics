@@ -34,7 +34,7 @@ public class AiBlindState : AiState
         agent.animator.SetLayerWeight(2,0);
         agent.RigLayer.GetComponent<Rig>().weight = 1;
         agent.Weapon.SetActive(true);
-        agent.initialState = AiStateId.ChasePlayer;
+        // agent.initialState = AiStateId.ChasePlayer;
         agent.Blind = false;
     }
 }
