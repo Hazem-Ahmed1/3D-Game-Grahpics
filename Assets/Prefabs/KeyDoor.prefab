@@ -153,8 +153,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Door: 0
   Key: 1
-  PlayerInventory: {fileID: 0}
-  Player: {fileID: 0}
+  Player: {fileID: 1257734690536828411, guid: 1affd3408495d784ea2027bfbd49075c, type: 3}
+  audioClip: {fileID: 8300000, guid: 3bd0b0fcc2cf6394da6631ef99bce29f, type: 3}
 --- !u!54 &1192174940873307995
 Rigidbody:
   m_ObjectHideFlags: 0
