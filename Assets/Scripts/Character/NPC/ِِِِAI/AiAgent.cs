@@ -13,7 +13,7 @@ public class AiAgent : MonoBehaviour
     [HideInInspector]
     public NavMeshAgent navMeshAgent;
     public AiAgentConfig config;
-    int scoreNPC = 0;
+    static int scoreNPC = 0;
 
     public KeyDoorController keyDoorController;
     public DoorController doorController;
@@ -41,6 +41,10 @@ public class AiAgent : MonoBehaviour
     public Transform bulletSpawnPoint;
     public GameObject BulletTornado;
     public float bulletSpeed = 10;
+
+    [SerializeField] private AudioSource audioSource = null;
+    [SerializeField] private AudioClip audioClip_ForPickItems = null;
+    [SerializeField] private AudioClip audioClip_forShoot = null;
 
     // Start is called before the first frame update
     [System.Obsolete]
@@ -129,6 +133,8 @@ public class AiAgent : MonoBehaviour
     {
         if (other.gameObject.name.Equals("KeyDoor"))
         {
+            audioSource.clip = audioClip_ForPickItems;
+            audioSource.Play();
             hasDoorLockedKey = true;
             initialState = AiStateId.goToDoorGoal;
             stateMachine.changeState(initialState);
@@ -137,18 +143,22 @@ public class AiAgent : MonoBehaviour
         }
         else if (other.gameObject.name.Equals("Door"))
         {
-            Debug.Log("Bedo");
+            // Debug.Log("Bedo");
             doorController.PlayAnimation();
             IsOpen = true;
         }
         else if (other.gameObject.name.Equals("FinalGoal"))
         {
+            audioSource.clip = audioClip_ForPickItems;
+            audioSource.Play();
             Destroy(other.gameObject);
             scoreNPC++;
             Debug.Log(scoreNPC);
         }
         else if (other.gameObject.name.Equals("Goal"))
         {
+            audioSource.clip = audioClip_ForPickItems;
+            audioSource.Play();
             Destroy(other.gameObject);
             scoreNPC++;
             Debug.Log(scoreNPC);
