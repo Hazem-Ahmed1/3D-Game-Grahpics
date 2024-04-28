@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,21 +11,19 @@ public class KeyRaycast : MonoBehaviour
     [SerializeField] private string excluseLayerMask = null;
     private KeyItemController raycastedObject;
     [SerializeField] private KeyCode openDoorKey = KeyCode.F;
-    // [SerializeField] private KeyCode stealDoorKey = KeyCode.Q;
-    // [SerializeField] private GameObject Enemy;
     [SerializeField] private GameObject Player;
-    // private KeyInventory EnemyInventory;
-    private KeyInventory PlayerInventory;
     [SerializeField] private Image crosshair = null ;
     private bool isCrosshairActive;
     private bool doOnce;
     private string interactTableTagDoor = "DoorInteractiveObj";
-    // private string interactTableTagEnemy = "EnemyInteractiveObj";
+    private string interactTableTagKey = "Key";
+
+    public GameObject interactionUI;
+    public TextMeshProUGUI interactionText;
 
     void Awake()
     {
-        // EnemyInventory = Enemy.GetComponent<KeyInventory>();
-        PlayerInventory = Player.GetComponent<KeyInventory>();
+        interactionUI.SetActive(false);
     }
     private void Update()
     {
@@ -33,13 +32,13 @@ public class KeyRaycast : MonoBehaviour
         int mask = 1 << LayerMask.NameToLayer(excluseLayerMask) | LayerMaskInteract.value;
         if (Physics.Raycast(transform.position,fwd, out hit,rayLenght,mask))
         {
+            // Door
             if(hit.collider.CompareTag(interactTableTagDoor))
             {
-                // Debug.Log("Mask");
                 if (!doOnce)
                 {
                     raycastedObject = hit.collider.gameObject.GetComponent<KeyItemController>();
-                    CrossHairChange(true);
+                    CrossHairChange(true,true);
                 }
                 isCrosshairActive = true;
                 doOnce = true;
@@ -47,34 +46,44 @@ public class KeyRaycast : MonoBehaviour
                 {
                     raycastedObject.ObjectInteraction();
                 }
-                // if (Input.GetKeyDown(stealDoorKey))
-                // {
-                //     if (EnemyInventory.hasDoorLockedKey)
-                //     {
-                //         EnemyInventory.hasDoorLockedKey = false;
-                //         PlayerInventory.hasDoorLockedKey = true;
-                //     }
-                // }
+            }
+            // key
+            else if(hit.collider.CompareTag(interactTableTagKey))
+            {
+                if (!doOnce)
+                {
+                    raycastedObject = hit.collider.gameObject.GetComponent<KeyItemController>();
+                    CrossHairChange(true,false);
+                }
+                isCrosshairActive = true;
+                doOnce = true;
+                if (Input.GetKeyDown(openDoorKey))
+                {
+                    raycastedObject.ObjectInteraction();
+                }
             }
         }
         else
         {
             if (isCrosshairActive)
             {
-                CrossHairChange(false);
+                CrossHairChange(false,false);
                 doOnce = false;
             }
         }
     }
-    void CrossHairChange(bool on)
+    void CrossHairChange(bool on, bool isDoor)
     {
         if (on && !doOnce)
         {
-            crosshair.color = Color.red;
+            interactionText.text = isDoor? "press" : "to grab press";
+            interactionUI.SetActive(on);
+            crosshair.enabled = false;
         }
         else
         {
-            crosshair.color = Color.white;
+            interactionUI.SetActive(false);
+            crosshair.enabled = true;
             isCrosshairActive = false;
         }
     }
