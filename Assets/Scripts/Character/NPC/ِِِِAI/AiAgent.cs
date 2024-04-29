@@ -81,6 +81,7 @@ public class AiAgent : MonoBehaviour
     [System.Obsolete]
     void Update()
     {
+        
         audioSource = GameObject.Find("Audio Source").GetComponent<AudioSource>();
         if(GameObject.Find("FinalGoal") != null){
             FinalGoalTransform = GameObject.Find("FinalGoal").transform;
@@ -113,7 +114,9 @@ public class AiAgent : MonoBehaviour
         {
             initialState = AiStateId.ChasePlayer;
         }
-        if (keyInventory.hasDoorLockedKey && distancePlayer < 7f && !dance && !snatcher)
+        if (keyInventory.hasDoorLockedKey && distancePlayer < 7f && !dance && !snatcher &&
+        (PlayerTransform.GetComponentInChildren<Animator>().GetLayerWeight(3) == 1 || 
+        PlayerTransform.GetComponent<MovementStateManager>().isRandomMovementActive))
         {
             initialState = AiStateId.StealKey;
         }
@@ -173,6 +176,7 @@ public class AiAgent : MonoBehaviour
         }
         else if (other.gameObject.CompareTag("Bullet_Dancing"))
         {
+            // Debug.Log("llll");
             initialState = AiStateId.Dance;
             stateMachine.changeState(initialState);
             Destroy(other.gameObject);
