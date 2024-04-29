@@ -15,6 +15,8 @@ TagManager:
   - Inventory
   - DoorGoal
   - BulletTornado
+  - FinalGoal
+  - goal
   layers:
   - Default
   - TransparentFX
