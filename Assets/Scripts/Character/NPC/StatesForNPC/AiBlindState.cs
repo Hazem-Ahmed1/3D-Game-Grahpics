@@ -13,11 +13,19 @@ public class AiBlindState : AiState
     }
     public void Enter(AiAgent agent)
     {
+        if (!agent.snatcher){
         agent.navMeshAgent.speed = 0;
         agent.animator.SetLayerWeight(2,1);
         agent.RigLayer.GetComponent<Rig>().weight = 0;
         agent.Weapon.SetActive(false);
         agent.Blind = true;
+        }else{
+            agent.navMeshAgent.speed = 0;
+        agent.animator.SetLayerWeight(2,1);
+        // agent.RigLayer.GetComponent<Rig>().weight = 0;
+        // agent.Weapon.SetActive(false);
+        agent.Blind = true;
+        }
 
         agent.StartCoroutine(TimeBlind(agent));
     }
@@ -30,11 +38,25 @@ public class AiBlindState : AiState
     IEnumerator TimeBlind(AiAgent agent)
     {
         yield return new WaitForSeconds(5);
+        // agent.navMeshAgent.speed = 7;
+        // agent.animator.SetLayerWeight(2,0);
+        // agent.RigLayer.GetComponent<Rig>().weight = 1;
+        // agent.Weapon.SetActive(true);
+        // agent.initialState = AiStateId.ChasePlayer;
+        // agent.Blind = false;
+        if (!agent.snatcher){
         agent.navMeshAgent.speed = 7;
         agent.animator.SetLayerWeight(2,0);
         agent.RigLayer.GetComponent<Rig>().weight = 1;
         agent.Weapon.SetActive(true);
         agent.initialState = AiStateId.ChasePlayer;
         agent.Blind = false;
+        }else{
+            agent.navMeshAgent.speed = 7;
+        agent.animator.SetLayerWeight(2,0);
+        // agent.RigLayer.GetComponent<Rig>().weight = 0;
+        // agent.Weapon.SetActive(false);
+        agent.Blind = false;
+        }
     }
 }
