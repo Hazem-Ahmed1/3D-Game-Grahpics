@@ -26,7 +26,8 @@ public class DuzzyDance : MonoBehaviour
             Duzzy.GetComponent<MovementStateManager>().enabled = false;
             animator.SetLayerWeight(animator.GetLayerIndex("DozyDancing"), 1);
             isDelayed = true;
-            Invoke("ResetDance", 5f); 
+            Invoke("ResetDance", 5f);
+            // Destroy(collision.gameObject);
         }
     }
 

@@ -42,9 +42,9 @@ public class AiAgent : MonoBehaviour
     public GameObject BulletTornado;
     public float bulletSpeed = 10;
 
-    [SerializeField] private AudioSource audioSource = null;
-    [SerializeField] private AudioClip audioClip_ForPickItems = null;
-    [SerializeField] private AudioClip audioClip_forShoot = null;
+    [HideInInspector] public AudioSource audioSource = null;
+    [SerializeField] public AudioClip audioClip_ForPickItems = null;
+    [SerializeField] public AudioClip audioClip_forShoot = null;
 
     // Start is called before the first frame update
     [System.Obsolete]
@@ -74,12 +74,14 @@ public class AiAgent : MonoBehaviour
         stateMachine.changeState(initialState);
         KeyFlag.active = hasDoorLockedKey? true : false;
         BodyLight.active = hasDoorLockedKey? true : false;
+        audioSource = GameObject.Find("Audio Source").GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     [System.Obsolete]
     void Update()
     {
+        audioSource = GameObject.Find("Audio Source").GetComponent<AudioSource>();
         if(GameObject.Find("FinalGoal") != null){
             FinalGoalTransform = GameObject.Find("FinalGoal").transform;
         }
@@ -143,7 +145,6 @@ public class AiAgent : MonoBehaviour
         }
         else if (other.gameObject.name.Equals("Door"))
         {
-            // Debug.Log("Bedo");
             doorController.PlayAnimation();
             IsOpen = true;
         }
@@ -174,17 +175,19 @@ public class AiAgent : MonoBehaviour
         {
             initialState = AiStateId.Dance;
             stateMachine.changeState(initialState);
+            Destroy(other.gameObject);
         }
         else if (other.gameObject.CompareTag("Blind_Bullet"))
         {
             initialState = AiStateId.Blind;
             stateMachine.changeState(initialState);
+            Destroy(other.gameObject);
         }
         else if (other.gameObject.CompareTag("BulletTornado"))
         {
-            Debug.Log("Bedo");
             initialState = AiStateId.Freeze;
             stateMachine.changeState(initialState);
+            Destroy(other.gameObject);
         }
     }
 }

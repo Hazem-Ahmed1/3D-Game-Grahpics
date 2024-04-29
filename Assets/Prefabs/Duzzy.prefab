@@ -387,6 +387,8 @@ GameObject:
   - component: {fileID: 6346433819313275796}
   - component: {fileID: 3523703886669354350}
   - component: {fileID: 8908738075873163744}
+  - component: {fileID: 2635655885322837078}
+  - component: {fileID: 1466111431527815367}
   m_Layer: 3
   m_Name: Duzzy
   m_TagString: Player
@@ -515,6 +517,39 @@ MonoBehaviour:
   keyInventory: {fileID: 2120387463853067371}
   audioSource: {fileID: 0}
   audioClip: {fileID: 8300000, guid: 3bd0b0fcc2cf6394da6631ef99bce29f, type: 3}
+--- !u!114 &2635655885322837078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1257734690536828411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b69b331d21217c46880c0c962e198b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 4385488948292859183}
+  Duzzy: {fileID: 1257734690536828411}
+  Player: {fileID: 2007858114508944518}
+  isDelayed: 0
+--- !u!114 &1466111431527815367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1257734690536828411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 386ddacc60b0b764684841404126a8ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blindImage: {fileID: 0}
+  image2: {fileID: 0}
+  isBlind: 0
+  text1: {fileID: 0}
+  text2: {fileID: 0}
 --- !u!1 &1292139360964242785
 GameObject:
   m_ObjectHideFlags: 0

@@ -158,8 +158,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1.864624, y: -0.932312}
-  m_SizeDelta: {x: 21.1319, y: 16.7814}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &96972886
 MonoBehaviour:
@@ -254,6 +254,13 @@ MonoBehaviour:
     GateFit: 2
     FocusDistance: 10
     m_SensorSize: {x: 1, y: 1}
+    Iso: 200
+    ShutterSpeed: 0.005
+    Aperture: 16
+    BladeCount: 5
+    Curvature: {x: 2, y: 11}
+    BarrelClipping: 0.25
+    Anamorphism: 0
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -933,15 +940,13 @@ ParticleSystemRenderer:
   m_RenderAlignment: 0
   m_Pivot: {x: 0, y: 0, z: 0}
   m_Flip: {x: 0, y: 0, z: 0}
+  m_UseCustomVertexStreams: 0
   m_EnableGPUInstancing: 1
   m_ApplyActiveColorSpace: 1
   m_AllowRoll: 1
   m_FreeformStretching: 0
   m_RotateWithStretchDirection: 1
-  m_UseCustomVertexStreams: 0
   m_VertexStreams: 00010304
-  m_UseCustomTrailVertexStreams: 0
-  m_TrailVertexStreams: 00010304
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
@@ -5744,6 +5749,13 @@ MonoBehaviour:
     GateFit: 2
     FocusDistance: 10
     m_SensorSize: {x: 1, y: 1}
+    Iso: 200
+    ShutterSpeed: 0.005
+    Aperture: 16
+    BladeCount: 5
+    Curvature: {x: 2, y: 11}
+    BarrelClipping: 0.25
+    Anamorphism: 0
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -5950,6 +5962,13 @@ MonoBehaviour:
     GateFit: 2
     FocusDistance: 10
     m_SensorSize: {x: 1, y: 1}
+    Iso: 200
+    ShutterSpeed: 0.005
+    Aperture: 16
+    BladeCount: 5
+    Curvature: {x: 2, y: 11}
+    BarrelClipping: 0.25
+    Anamorphism: 0
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -6141,6 +6160,13 @@ MonoBehaviour:
     GateFit: 2
     FocusDistance: 10
     m_SensorSize: {x: 1, y: 1}
+    Iso: 200
+    ShutterSpeed: 0.005
+    Aperture: 16
+    BladeCount: 5
+    Curvature: {x: 2, y: 11}
+    BarrelClipping: 0.25
+    Anamorphism: 0
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -7822,6 +7848,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasDoorLockedKey: 0
+  KeyFlag: {fileID: 0}
+  BodyLight: {fileID: 0}
+  keyUI: {fileID: 0}
 --- !u!4 &2154355659281407343
 Transform:
   m_ObjectHideFlags: 0
@@ -8274,6 +8303,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasDoorLockedKey: 0
+  KeyFlag: {fileID: 0}
+  BodyLight: {fileID: 0}
+  keyUI: {fileID: 0}
 --- !u!1 &3610543034922977789
 GameObject:
   m_ObjectHideFlags: 0
@@ -8826,7 +8858,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CountAttackClick: 0
-  active: {fileID: 3523703885721244610}
 --- !u!4 &5244812639698001036
 Transform:
   m_ObjectHideFlags: 0
@@ -9257,6 +9288,7 @@ MonoBehaviour:
   groundYoffset: 0
   gravity: -9.81
   anim: {fileID: 0}
+  isRandomMovementActive: 0
 --- !u!114 &6346433819976041785
 MonoBehaviour:
   m_ObjectHideFlags: 0

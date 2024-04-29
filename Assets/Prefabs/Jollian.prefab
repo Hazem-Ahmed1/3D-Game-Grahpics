@@ -7280,6 +7280,7 @@ GameObject:
   - component: {fileID: 4722469230389472003}
   - component: {fileID: 293057437688979832}
   - component: {fileID: 6169283487460704422}
+  - component: {fileID: 5148367085641006378}
   m_Layer: 3
   m_Name: Jollian
   m_TagString: Untagged
@@ -7338,7 +7339,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 5
+  m_Speed: 3
   m_Acceleration: 40
   avoidancePriority: 50
   m_AngularSpeed: 720
@@ -7413,8 +7414,11 @@ MonoBehaviour:
   snatcher: 0
   getGoal: 1
   bulletSpawnPoint: {fileID: 7986125558599104945}
-  BulletTornado: {fileID: 2257979435688676814, guid: 4ee58e0f74e75294db3519c5cd64a969, type: 3}
+  BulletTornado: {fileID: 3095724047704521523, guid: eacabaceaaa329740a9c8afc9fb0580a, type: 3}
   bulletSpeed: 50
+  audioSource: {fileID: 0}
+  audioClip_ForPickItems: {fileID: 8300000, guid: 3bd0b0fcc2cf6394da6631ef99bce29f, type: 3}
+  audioClip_forShoot: {fileID: 8300000, guid: eba46b5f6458eeb46b0230faac6fa8ca, type: 3}
 --- !u!114 &4722469230389472003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7469,7 +7473,7 @@ MonoBehaviour:
   targetTransform: {fileID: 0}
   aimTransform: {fileID: 7986125558599104945}
   targetOffset: {x: 0, y: 0.87, z: 0}
-  iterations: 10
+  iterations: 20
   weight: 0.5
   angleLimit: 90
   distanceLimit: 1.5
@@ -7480,6 +7484,33 @@ MonoBehaviour:
     weight: 1
   - bone: 54
     weight: 1
+--- !u!54 &5148367085641006378
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6123297884403983686}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &6256401180876813847
 GameObject:
   m_ObjectHideFlags: 0
