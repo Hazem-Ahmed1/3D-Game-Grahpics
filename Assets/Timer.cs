@@ -12,16 +12,17 @@ public class Timer : MonoBehaviour
     [SerializeField]float remaingTime;
     void Update()
     {
-        Cursor.lockState = CursorLockMode.None;
         if(remaingTime > 0){
             remaingTime -= Time.deltaTime;
         }
         else if(remaingTime <= 0){
             remaingTime = 0;
             if(PlayerInteraction.score > AiAgent.scoreNPC){
+                Cursor.lockState = CursorLockMode.None;
                 win.setup(PlayerInteraction.score);
             }
             else{
+                Cursor.lockState = CursorLockMode.None;
                 gameOverScreen.setup();
             }
             

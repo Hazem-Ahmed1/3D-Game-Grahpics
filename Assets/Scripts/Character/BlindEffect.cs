@@ -47,7 +47,7 @@ public class BlindEffect : MonoBehaviour
                 StopCoroutine(reduceTransparencyCoroutine);
             }
             reduceTransparencyCoroutine = StartCoroutine(ReduceTransparency());
-            // Destroy(collision.gameObject);
+            Destroy(collision.gameObject);
         }
     }
 

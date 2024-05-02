@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameOverScreen : MonoBehaviour
 {
     public void setup(){
+        Cursor.lockState = CursorLockMode.None;
         gameObject.SetActive(true);
         Time.timeScale = 0f;
         Cursor.lockState = CursorLockMode.None;

@@ -45,9 +45,9 @@ public class AiAgent : MonoBehaviour
     public GameObject BulletTornado;
     public float bulletSpeed = 10;
 
-    [SerializeField] private AudioSource audioSource = null;
+    [SerializeField] public AudioSource audioSource = null;
     public AudioClip audioClip_ForPickItems = null;
-    [SerializeField] private AudioClip audioClip_forShoot = null;
+    [SerializeField] public AudioClip audioClip_forShoot = null;
 
     // Start is called before the first frame update
     [System.Obsolete]
@@ -59,8 +59,8 @@ public class AiAgent : MonoBehaviour
         PlayerTransform = GameObject.FindGameObjectWithTag("Player");
         FinalDoorTransform = GameObject.Find("LockedDoor");
         KeyTransform = GameObject.Find("KeyDoor(Clone)");
-        FinalGoalTransform = GameObject.Find("FinalGoal").transform;
-        GoalTransform = GameObject.Find("Goal").transform;
+        FinalGoalTransform = GameObject.Find("FinalGoal(Clone)").transform;
+        GoalTransform = GameObject.Find("Goal(Clone)").transform;
 
         // Create instance from this state
         stateMachine.RegisterState(new AiGetKeyState());
