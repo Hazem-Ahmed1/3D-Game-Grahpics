@@ -161,7 +161,6 @@ public class AiAgent : MonoBehaviour
         {
             audioSource.clip = audioClip_ForPickItems;
             audioSource.Play();
-            Debug.Log("yarab");
             Destroy(other.gameObject);
             scoreNPC++;
             points.text = "X" + scoreNPC.ToString();
