@@ -6,24 +6,30 @@ public class KeyItemController : MonoBehaviour
 {
     [SerializeField] private bool Door = false;
     [SerializeField] private bool Key = false;
-    [SerializeField] private KeyInventory PlayerInventory = null;
-    // [SerializeField] private KeyInventory EnemyInventory = null;
-    [SerializeField]GameObject Player;
-    // [SerializeField]GameObject Enemy;
-    // private string interactTableTagEnemy = "EnemyInteractiveObj";
-    // private string interactTableTagPlayer = "Player";
+    [HideInInspector] private KeyInventory PlayerInventory = null;
+    [HideInInspector]GameObject Player;
     private float distancePlayer;
-    // private float distanceEnemy;
     private KeyDoorController doorObject;
+
+    [HideInInspector] private AudioSource audioSource = null;
+    [SerializeField] private AudioClip audioClip = null;
+    //public GameObject flag;
 
     private void Start()
     {
+        Player = GameObject.Find("Duzzy");
         if (Door)
         {
             doorObject = GetComponent<KeyDoorController>();
+            PlayerInventory = Player.GetComponentInChildren<KeyInventory>();
+            audioSource = GameObject.Find("Audio Source").GetComponent<AudioSource>();
         }
     }
-
+    private void Update(){
+        Player = GameObject.Find("Duzzy");
+        audioSource = GameObject.Find("Audio Source").GetComponent<AudioSource>();
+        PlayerInventory = Player.GetComponentInChildren<KeyInventory>();
+    }
     public void ObjectInteraction()
     {
         if (Door)
@@ -33,17 +39,15 @@ public class KeyItemController : MonoBehaviour
         else if (Key)
         {
             distancePlayer = Vector3.Distance(Player.gameObject.transform.position, this.gameObject.transform.position);
-            // distanceEnemy = Vector3.Distance(Enemy.gameObject.transform.position, this.gameObject.transform.position);
-            // Debug.Log(distanceEnemy);
             Debug.Log(distancePlayer);
             if (distancePlayer <= 5)
             {
+                Debug.Log("hhh");
                 PlayerInventory.hasDoorLockedKey = true;
+                audioSource.clip = audioClip;
+                audioSource.Play();
             }
-            // else if (distanceEnemy <= 5)
-            // {
-            //     EnemyInventory.hasDoorLockedKey=true;
-            // }
+            //flag.SetActive(false);
             gameObject.SetActive(false);
         }
     }

@@ -6,6 +6,8 @@ using TMPro;
 public class Timer : MonoBehaviour
 {
     public GameOverScreen  gameOverScreen;
+    //public PlayerInteraction playerScore;
+    public WinScreen win;
     [SerializeField] TextMeshProUGUI timerText;
     [SerializeField]float remaingTime;
     void Update()
@@ -16,7 +18,13 @@ public class Timer : MonoBehaviour
         }
         else if(remaingTime <= 0){
             remaingTime = 0;
-            gameOverScreen.setup();
+            if(PlayerInteraction.score > AiAgent.scoreNPC){
+                win.setup(PlayerInteraction.score);
+            }
+            else{
+                gameOverScreen.setup();
+            }
+            
         }
         
         int minutes = Mathf.FloorToInt(remaingTime/60);

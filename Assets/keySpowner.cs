@@ -6,6 +6,7 @@ public class keySpowner : MonoBehaviour
 {
     private List<Vector3> vectors = new List<Vector3>();
     public GameObject key;
+    public GameObject flag;
     void Start()
     {
         vectors.Add(new Vector3(115.5f, 0.76f, 57.2f));
@@ -20,13 +21,18 @@ public class keySpowner : MonoBehaviour
 
         Vector3 randomVector = GetRandomVector();
 
-        Instantiate(key,randomVector,Quaternion.identity);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+        SetupKeyAndFlag();
         
+    }
+    public void SetupKeyAndFlag()
+    {
+        Vector3 randomVector = GetRandomVector();
+        GameObject instantiatedTreasure = Instantiate(key, randomVector, Quaternion.identity);
+        float heightAboveTreasure = 15.0f;
+        flag.transform.position = new Vector3(instantiatedTreasure.transform.position.x, 
+                                          instantiatedTreasure.transform.position.y + heightAboveTreasure, 
+                                          instantiatedTreasure.transform.position.z);
+        flag.SetActive(true);
     }
 
     Vector3 GetRandomVector()

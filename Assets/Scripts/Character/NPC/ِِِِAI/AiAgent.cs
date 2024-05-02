@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Animations.Rigging;
@@ -13,7 +14,7 @@ public class AiAgent : MonoBehaviour
     [HideInInspector]
     public NavMeshAgent navMeshAgent;
     public AiAgentConfig config;
-    int scoreNPC = 0;
+    public static int scoreNPC = 0;
 
     public KeyDoorController keyDoorController;
     public DoorController doorController;
@@ -27,6 +28,8 @@ public class AiAgent : MonoBehaviour
     [HideInInspector] public GameObject FinalDoorTransform;
     [HideInInspector] public Transform GoalTransform;
     [HideInInspector] public Animator animator;
+    public treasureSpowner treasureSpowner;
+    public TextMeshProUGUI points;
     public GameObject Weapon;
     public GameObject RigLayer;
     public bool hasDoorLockedKey = false;
@@ -42,6 +45,10 @@ public class AiAgent : MonoBehaviour
     public GameObject BulletTornado;
     public float bulletSpeed = 10;
 
+    [SerializeField] private AudioSource audioSource = null;
+    public AudioClip audioClip_ForPickItems = null;
+    [SerializeField] private AudioClip audioClip_forShoot = null;
+
     // Start is called before the first frame update
     [System.Obsolete]
     void Start()
@@ -51,7 +58,7 @@ public class AiAgent : MonoBehaviour
         stateMachine = new AiStateMachine(this);
         PlayerTransform = GameObject.FindGameObjectWithTag("Player");
         FinalDoorTransform = GameObject.Find("LockedDoor");
-        KeyTransform = GameObject.Find("KeyDoor");
+        KeyTransform = GameObject.Find("KeyDoor(Clone)");
         FinalGoalTransform = GameObject.Find("FinalGoal").transform;
         GoalTransform = GameObject.Find("Goal").transform;
 
@@ -70,20 +77,23 @@ public class AiAgent : MonoBehaviour
         stateMachine.changeState(initialState);
         KeyFlag.active = hasDoorLockedKey? true : false;
         BodyLight.active = hasDoorLockedKey? true : false;
+
+        scoreNPC = 0;
+        points.text = "X" + scoreNPC.ToString();
     }
 
     // Update is called once per frame
     [System.Obsolete]
     void Update()
     {
-        if(GameObject.Find("FinalGoal") != null){
-            FinalGoalTransform = GameObject.Find("FinalGoal").transform;
+        if(GameObject.Find("FinalGoal(Clone)") != null){
+            FinalGoalTransform = GameObject.Find("FinalGoal(Clone)").transform;
         }
-        if(GameObject.Find("KeyDoor") != null){
-            KeyTransform = GameObject.Find("KeyDoor");
+        if(GameObject.Find("KeyDoor(Clone)") != null){
+            KeyTransform = GameObject.Find("KeyDoor(Clone)");
         }
-        if(GameObject.Find("Goal") != null){
-            GoalTransform = GameObject.Find("Goal").transform;
+        if(GameObject.Find("Goal(Clone)") != null){
+            GoalTransform = GameObject.Find("Goal(Clone)").transform;
         }
         KeyFlag.active = hasDoorLockedKey? true : false;
         BodyLight.active = hasDoorLockedKey? true : false;
@@ -127,8 +137,10 @@ public class AiAgent : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name.Equals("KeyDoor"))
+        if (other.gameObject.name.Equals("KeyDoor(Clone)"))
         {
+            audioSource.clip = audioClip_ForPickItems;
+            audioSource.Play();
             hasDoorLockedKey = true;
             initialState = AiStateId.goToDoorGoal;
             stateMachine.changeState(initialState);
@@ -137,20 +149,30 @@ public class AiAgent : MonoBehaviour
         }
         else if (other.gameObject.name.Equals("Door"))
         {
-            Debug.Log("Bedo");
+            // Debug.Log("Bedo");
             doorController.PlayAnimation();
             IsOpen = true;
         }
-        else if (other.gameObject.name.Equals("FinalGoal"))
+        else if (other.gameObject.name.Equals("FinalGoal(Clone)"))
         {
+            audioSource.clip = audioClip_ForPickItems;
+            audioSource.Play();
+            Debug.Log("yarab");
             Destroy(other.gameObject);
             scoreNPC++;
+            points.text = "X" + scoreNPC.ToString();
             Debug.Log(scoreNPC);
+            treasureSpowner.SetupTreasureAndFlag();
         }
-        else if (other.gameObject.name.Equals("Goal"))
+        else if (other.gameObject.name.Equals("Goal(Clone)"))
         {
+            audioSource.clip = audioClip_ForPickItems;
+            audioSource.Play();
+            Debug.Log("yarabb");
             Destroy(other.gameObject);
             scoreNPC++;
+            points.text = "X" + scoreNPC.ToString();
+            treasureSpowner.SetupTreasureAndFlag();
             Debug.Log(scoreNPC);
         }
         else if (other.gameObject.CompareTag("DoorGoal") && hasDoorLockedKey && !IsOpen)

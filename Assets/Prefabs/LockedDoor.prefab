@@ -31,13 +31,12 @@ Transform:
   m_GameObject: {fileID: 1814024532380623888}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.6925839, z: -0, w: 0.7213374}
-  m_LocalPosition: {x: 0, y: 0, z: 0.429276}
+  m_LocalPosition: {x: 0, y: 0.17, z: 0.429276}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5679748887846399233}
   - {fileID: 6642633031000103828}
-  - {fileID: 5994585569550737111}
   m_Father: {fileID: 7973355935062180159}
   m_LocalEulerAnglesHint: {x: 0, y: 87.67, z: 0}
 --- !u!95 &2408737235688126809
@@ -136,6 +135,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59ad8ce7ed569f34ea13bb305321f9e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
+  audioClip: {fileID: 0}
   waitTimerAnimation: 1
   pauseInteraction: 0
 --- !u!114 &5688952783246048097
@@ -152,8 +153,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Door: 1
   Key: 0
-  PlayerInventory: {fileID: 0}
   Player: {fileID: 0}
+  audioClip: {fileID: 0}
 --- !u!114 &1734446165063970091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,10 +171,12 @@ MonoBehaviour:
   openAnimationName: OpenDoor
   closeAnimationName: CloseDoor
   TimeLockedUI: 1
-  showDoorLockedUI: {fileID: 6515489415716653538}
+  showDoorLockedUI: {fileID: 0}
   PlayerInventory: {fileID: 0}
   waitTimerAnimation: 1
   pauseInteraction: 0
+  audioSource: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: 093ad08402ef0934f922284dc7b03231, type: 3}
 --- !u!1 &2617273672144866450
 GameObject:
   m_ObjectHideFlags: 0
@@ -185,7 +188,7 @@ GameObject:
   - component: {fileID: 6642633031000103828}
   - component: {fileID: 2128105272082631303}
   - component: {fileID: 7343944199866747973}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: 03_low
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -268,7 +271,7 @@ GameObject:
   - component: {fileID: 5679748887846399233}
   - component: {fileID: 2586949955414727514}
   - component: {fileID: 7102545447816302338}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: 01_low
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -350,7 +353,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7973355935062180159}
   - component: {fileID: 8194733274224570482}
-  m_Layer: 0
+  - component: {fileID: 4788822236179225533}
+  m_Layer: 7
   m_Name: LockedDoor
   m_TagString: DoorGoal
   m_Icon: {fileID: 0}
@@ -365,9 +369,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6100836233640188210}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.5, y: -0.21070196, z: 2.52}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.55, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5130650390853860076}
@@ -392,102 +396,32 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.94, y: 1.6796743, z: 1.1}
-  m_Center: {x: 0, y: 1.0498374, z: -0.08}
---- !u!1 &6515489415716653538
-GameObject:
+  m_Size: {x: 0.2, y: 0.32, z: 0.33}
+  m_Center: {x: 0, y: 0.96, z: -0.08}
+--- !u!54 &4788822236179225533
+Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5994585569550737111}
-  - component: {fileID: 2266794603763878779}
-  - component: {fileID: 8911140575647704359}
-  m_Layer: 0
-  m_Name: UI_Door_Locked
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &5994585569550737111
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6515489415716653538}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.6925839, z: -0, w: 0.7213374}
-  m_LocalPosition: {x: 0.1, y: 0.82, z: 0.01}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 5130650390853860076}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &2266794603763878779
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6515489415716653538}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!102 &8911140575647704359
-TextMesh:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6515489415716653538}
-  m_Text: "Door Locked \nrequired Key"
-  m_OffsetZ: 0
-  m_CharacterSize: 0.1
-  m_LineSpacing: 1
-  m_Anchor: 4
-  m_Alignment: 0
-  m_TabSize: 4
-  m_FontSize: 15
-  m_FontStyle: 0
-  m_RichText: 1
-  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-  m_Color:
+  m_GameObject: {fileID: 6100836233640188210}
+  serializedVersion: 4
+  m_Mass: 0.0000001
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
     serializedVersion: 2
-    rgba: 4278584839
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 1

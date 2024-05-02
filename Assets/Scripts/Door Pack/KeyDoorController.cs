@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class KeyDoorController : MonoBehaviour
@@ -15,10 +16,19 @@ public class KeyDoorController : MonoBehaviour
     [SerializeField]private KeyInventory PlayerInventory;
     [SerializeField] private int waitTimerAnimation = 1;
     [SerializeField] private bool pauseInteraction = false;
-
+    [SerializeField] private AudioSource audioSource = null;
+    [SerializeField] private AudioClip audioClip = null;
     private void Awake()
     {
         doorAnim = gameObject.GetComponent<Animator>();
+        Player = GameObject.Find("Duzzy");
+        PlayerInventory = Player.GetComponentInChildren<KeyInventory>();
+        audioSource = GameObject.Find("Audio Source").GetComponent<AudioSource>();
+    }
+    void Update(){
+        Player = GameObject.Find("Duzzy");
+        audioSource = GameObject.Find("Audio Source").GetComponent<AudioSource>();
+        PlayerInventory = Player.GetComponentInChildren<KeyInventory>();
     }
 
     private IEnumerator PauseDoorInteraction()
@@ -43,8 +53,8 @@ public class KeyDoorController : MonoBehaviour
     {
         if (!doorOpen && !pauseInteraction)
         {
-            // audioSource.clip = audioClip;
-            // audioSource.Play();
+            audioSource.clip = audioClip;
+            audioSource.Play();
             doorAnim.Play(openAnimationName, 0, 0.0f);
             doorOpen = true;
             StartCoroutine(PauseDoorInteraction());
@@ -52,8 +62,8 @@ public class KeyDoorController : MonoBehaviour
         }
         else if(doorOpen && !pauseInteraction)
         {
-            // audioSource.clip = audioClip;
-            // audioSource.Play();
+            audioSource.clip = audioClip;
+            audioSource.Play();
             doorAnim.Play(closeAnimationName, 0, 0.0f);
             doorOpen = false;
             StartCoroutine(PauseDoorInteraction());

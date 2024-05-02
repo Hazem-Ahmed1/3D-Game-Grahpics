@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class GameOverScreen : MonoBehaviour
 {
-    public MainMenu mainMenu;
     public void setup(){
         gameObject.SetActive(true);
         Time.timeScale = 0f;

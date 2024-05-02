@@ -16,6 +16,8 @@ public class Boost : MonoBehaviour
     private float originalRunSpeed;
     private float originalRunBackSpeed;
 
+    [SerializeField] private AudioSource audioSource = null;
+    [SerializeField] private AudioClip audioClip = null;
     void Awake()
     {
         movementStateManager = GameObject.Find("Duzzy").GetComponent<MovementStateManager>();
@@ -36,6 +38,8 @@ public class Boost : MonoBehaviour
         {
             BoostEffect.GetComponent<ParticleSystem>().Play();
             BoostEffect.GetComponent<AudioSource>().Play();
+            audioSource.clip = audioClip;
+            audioSource.Play();
             StartCoroutine(speedBoost());
         }
     }

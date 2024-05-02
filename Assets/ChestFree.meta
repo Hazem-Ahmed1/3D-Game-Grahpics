@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/ChestFree.meta
 guid: 5b896d41021c2bd428518d8d9da93381
+=======
+guid: 99cb60c1f704cac46aa78ea53031d1cf
+>>>>>>> f2cf9c9216a6d01e457c3bc28a0dce75d6a12582:Assets/Sounds/Doors/test.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

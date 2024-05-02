@@ -513,6 +513,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyInventory: {fileID: 2120387463853067371}
+  audioSource: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: 3bd0b0fcc2cf6394da6631ef99bce29f, type: 3}
 --- !u!1 &1292139360964242785
 GameObject:
   m_ObjectHideFlags: 0
