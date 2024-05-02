@@ -6,7 +6,8 @@ using TMPro;
 public class Timer : MonoBehaviour
 {
     public GameOverScreen  gameOverScreen;
-    //public PlayerInteraction playerScore;
+    public GameObject playerUI;
+    public GameObject playerUI2;
     public WinScreen win;
     [SerializeField] TextMeshProUGUI timerText;
     [SerializeField]float remaingTime;
@@ -17,6 +18,9 @@ public class Timer : MonoBehaviour
         }
         else if(remaingTime <= 0){
             remaingTime = 0;
+            
+            playerUI.SetActive(false);
+            playerUI2.SetActive(false);
             if(PlayerInteraction.score > AiAgent.scoreNPC){
                 Cursor.lockState = CursorLockMode.None;
                 win.setup(PlayerInteraction.score);
