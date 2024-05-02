@@ -77,6 +77,7 @@ public class AiAgent : MonoBehaviour
         stateMachine.changeState(initialState);
         KeyFlag.active = hasDoorLockedKey? true : false;
         BodyLight.active = hasDoorLockedKey? true : false;
+        audioSource = GameObject.Find("Audio Source").GetComponent<AudioSource>();
 
         scoreNPC = 0;
         points.text = "X" + scoreNPC.ToString();
@@ -86,6 +87,8 @@ public class AiAgent : MonoBehaviour
     [System.Obsolete]
     void Update()
     {
+        
+        audioSource = GameObject.Find("Audio Source").GetComponent<AudioSource>();
         if(GameObject.Find("FinalGoal(Clone)") != null){
             FinalGoalTransform = GameObject.Find("FinalGoal(Clone)").transform;
         }
@@ -117,7 +120,9 @@ public class AiAgent : MonoBehaviour
         {
             initialState = AiStateId.ChasePlayer;
         }
-        if (keyInventory.hasDoorLockedKey && distancePlayer < 7f && !dance && !snatcher)
+        if (keyInventory.hasDoorLockedKey && distancePlayer < 7f && !dance && !snatcher &&
+        (PlayerTransform.GetComponentInChildren<Animator>().GetLayerWeight(3) == 1 || 
+        PlayerTransform.GetComponent<MovementStateManager>().isRandomMovementActive))
         {
             initialState = AiStateId.StealKey;
         }
@@ -149,7 +154,6 @@ public class AiAgent : MonoBehaviour
         }
         else if (other.gameObject.name.Equals("Door"))
         {
-            // Debug.Log("Bedo");
             doorController.PlayAnimation();
             IsOpen = true;
         }
@@ -184,19 +188,22 @@ public class AiAgent : MonoBehaviour
         }
         else if (other.gameObject.CompareTag("Bullet_Dancing"))
         {
+            // Debug.Log("llll");
             initialState = AiStateId.Dance;
             stateMachine.changeState(initialState);
+            Destroy(other.gameObject);
         }
         else if (other.gameObject.CompareTag("Blind_Bullet"))
         {
             initialState = AiStateId.Blind;
             stateMachine.changeState(initialState);
+            Destroy(other.gameObject);
         }
         else if (other.gameObject.CompareTag("BulletTornado"))
         {
-            Debug.Log("Bedo");
             initialState = AiStateId.Freeze;
             stateMachine.changeState(initialState);
+            Destroy(other.gameObject);
         }
     }
 }

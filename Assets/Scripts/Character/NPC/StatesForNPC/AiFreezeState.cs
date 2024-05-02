@@ -11,10 +11,17 @@ public class AiFreezeState : AiState
     }
     public void Enter(AiAgent agent)
     {
-        agent.navMeshAgent.speed = 0;
-        agent.RigLayer.GetComponent<Rig>().weight = 0;
-        agent.Weapon.SetActive(false);
-        agent.Blind = true;
+        if (!agent.snatcher){
+            agent.navMeshAgent.speed = 0;
+            agent.RigLayer.GetComponent<Rig>().weight = 0;
+            agent.Weapon.SetActive(false);
+            agent.Blind = true;
+        }else{
+            agent.navMeshAgent.speed = 0;
+            // agent.RigLayer.GetComponent<Rig>().weight = 0;
+            // agent.Weapon.SetActive(false);
+            agent.Blind = true;
+        }
 
         agent.StartCoroutine(FreezeTime(agent));
     }
@@ -29,9 +36,17 @@ public class AiFreezeState : AiState
     IEnumerator FreezeTime(AiAgent agent)
     {
         yield return new WaitForSeconds(5);
-        agent.navMeshAgent.speed = 7;
-        agent.RigLayer.GetComponent<Rig>().weight = 1;
-        agent.Weapon.SetActive(true);
-        agent.Blind = false;
+        
+        if (!agent.snatcher){
+            agent.navMeshAgent.speed = 7;
+            agent.RigLayer.GetComponent<Rig>().weight = 1;
+            agent.Weapon.SetActive(true);
+            agent.Blind = false;
+        }else{
+            agent.navMeshAgent.speed = 7;
+            // agent.RigLayer.GetComponent<Rig>().weight = 0;
+            // agent.Weapon.SetActive(false);
+            agent.Blind = false;
+        }
     }
 }

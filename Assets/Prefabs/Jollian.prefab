@@ -7280,7 +7280,7 @@ GameObject:
   - component: {fileID: 4722469230389472003}
   - component: {fileID: 293057437688979832}
   - component: {fileID: 6169283487460704422}
-  - component: {fileID: 2234167013150380448}
+  - component: {fileID: 5148367085641006378}
   m_Layer: 3
   m_Name: Jollian
   m_TagString: Untagged
@@ -7414,7 +7414,7 @@ MonoBehaviour:
   snatcher: 0
   getGoal: 1
   bulletSpawnPoint: {fileID: 7986125558599104945}
-  BulletTornado: {fileID: 2257979435688676814, guid: 4ee58e0f74e75294db3519c5cd64a969, type: 3}
+  BulletTornado: {fileID: 3156973882111189762, guid: 71c3d759c5a46e94f93683eca15a45bb, type: 3}
   bulletSpeed: 50
   audioSource: {fileID: 0}
   audioClip_ForPickItems: {fileID: 8300000, guid: 3bd0b0fcc2cf6394da6631ef99bce29f, type: 3}
@@ -7473,7 +7473,7 @@ MonoBehaviour:
   targetTransform: {fileID: 0}
   aimTransform: {fileID: 7986125558599104945}
   targetOffset: {x: 0, y: 0.87, z: 0}
-  iterations: 10
+  iterations: 20
   weight: 0.5
   angleLimit: 90
   distanceLimit: 1.5
@@ -7484,7 +7484,7 @@ MonoBehaviour:
     weight: 1
   - bone: 54
     weight: 1
---- !u!54 &2234167013150380448
+--- !u!54 &5148367085641006378
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

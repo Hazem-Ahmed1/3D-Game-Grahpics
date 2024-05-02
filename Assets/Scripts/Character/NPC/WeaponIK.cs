@@ -12,11 +12,9 @@ public class WeaponIK : MonoBehaviour
     public Transform targetTransform;
     public Transform aimTransform;
     public Vector3 targetOffset;
-    // public Transform bone;
     public int iterations = 10;
     [Range(0, 1)]
     public float weight = 1.0f;
-
     public float angleLimit = 90.0f;
     public float distanceLimit = 1.5f;
     public HumanBone[] humanBones;
@@ -41,7 +39,6 @@ public class WeaponIK : MonoBehaviour
         {
             blendOut += (targetAngle - angleLimit) / 50.0f;
         }
-
         // fix when the target is close to enemy
         float targetDistance = targetDirection.magnitude;
         if (targetDistance < distanceLimit)
