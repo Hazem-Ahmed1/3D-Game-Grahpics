@@ -178,6 +178,13 @@ MonoBehaviour:
     GateFit: 2
     FocusDistance: 10
     m_SensorSize: {x: 1, y: 1}
+    Iso: 200
+    ShutterSpeed: 0.005
+    Aperture: 16
+    BladeCount: 5
+    Curvature: {x: 2, y: 11}
+    BarrelClipping: 0.25
+    Anamorphism: 0
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -546,6 +553,13 @@ MonoBehaviour:
     GateFit: 2
     FocusDistance: 10
     m_SensorSize: {x: 1, y: 1}
+    Iso: 200
+    ShutterSpeed: 0.005
+    Aperture: 16
+    BladeCount: 5
+    Curvature: {x: 2, y: 11}
+    BarrelClipping: 0.25
+    Anamorphism: 0
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -766,6 +780,13 @@ MonoBehaviour:
     GateFit: 2
     FocusDistance: 10
     m_SensorSize: {x: 1, y: 1}
+    Iso: 200
+    ShutterSpeed: 0.005
+    Aperture: 16
+    BladeCount: 5
+    Curvature: {x: 2, y: 11}
+    BarrelClipping: 0.25
+    Anamorphism: 0
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1322,6 +1343,13 @@ MonoBehaviour:
     GateFit: 2
     FocusDistance: 10
     m_SensorSize: {x: 1, y: 1}
+    Iso: 200
+    ShutterSpeed: 0.005
+    Aperture: 16
+    BladeCount: 5
+    Curvature: {x: 2, y: 11}
+    BarrelClipping: 0.25
+    Anamorphism: 0
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1572,6 +1600,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3307226568882915053, guid: 1affd3408495d784ea2027bfbd49075c, type: 3}
   m_PrefabInstance: {fileID: 3729741804582644879}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &397409571215258584 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3523703886669354350, guid: 1affd3408495d784ea2027bfbd49075c, type: 3}
+  m_PrefabInstance: {fileID: 3729741804582644879}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c2548595a9ad17479aa586099c09ca9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1637845674182039391
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1641,10 +1680,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Duzzy
       objectReference: {fileID: 0}
+    - target: {fileID: 1466111431527815367, guid: 1affd3408495d784ea2027bfbd49075c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1996041197076198157, guid: 1affd3408495d784ea2027bfbd49075c, type: 3}
       propertyPath: m_Data.m_SourceObjects.m_Item0.transform
       value: 
       objectReference: {fileID: 1548563995}
+    - target: {fileID: 2120387463853067371, guid: 1affd3408495d784ea2027bfbd49075c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3307226568882915053, guid: 1affd3408495d784ea2027bfbd49075c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 201.8
@@ -1693,6 +1740,10 @@ PrefabInstance:
       propertyPath: m_Data.m_SourceObjects.m_Item0.transform
       value: 
       objectReference: {fileID: 1548563995}
+    - target: {fileID: 5101917256154191362, guid: 1affd3408495d784ea2027bfbd49075c, type: 3}
+      propertyPath: active
+      value: 
+      objectReference: {fileID: 397409571215258584}
     - target: {fileID: 6248761117094098476, guid: 1affd3408495d784ea2027bfbd49075c, type: 3}
       propertyPath: m_Data.m_SourceObjects.m_Item0.transform
       value: 

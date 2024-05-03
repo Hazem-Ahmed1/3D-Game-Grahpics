@@ -8,7 +8,7 @@ public class ComboAttack : MonoBehaviour
     public int CountAttackClick;
     private bool isAttacking;
 
-    // public ActiveWeapon active;
+    public ActiveWeapon active;
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -18,7 +18,7 @@ public class ComboAttack : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0) && !isAttacking)// && !active.weapon ) // Assuming left mouse button triggers the attack
+        if (Input.GetKeyDown(KeyCode.Mouse0) && !isAttacking && !active.weapon ) // Assuming left mouse button triggers the attack
         {
             StartCoroutine(StartAttack());
         }

@@ -47,10 +47,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Bottle: {fileID: 8329380747639330779}
-  ExtremeBoost: 8
+  ExtremeBoost: 1
   BoostDuration: 5
-  audioSource: {fileID: 1539766541265358810, guid: db49ef1df77a5b54ba53043d0bba0084, type: 3}
-  audioClip: {fileID: 8300000, guid: 3bd0b0fcc2cf6394da6631ef99bce29f, type: 3}
 --- !u!135 &1883866486656585308
 SphereCollider:
   m_ObjectHideFlags: 0
