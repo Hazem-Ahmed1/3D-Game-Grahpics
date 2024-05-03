@@ -8,7 +8,7 @@ public class Boost : MonoBehaviour
     MovementStateManager movementStateManager;
     [SerializeField] GameObject Bottle;
     GameObject BoostEffect;
-    [SerializeField] private int ExtremeBoost = 8; // Change the initial value to 8
+    [SerializeField] private int ExtremeBoost = 2; // Change the initial value to 8
     [SerializeField] private float BoostDuration = 5f;
 
     private float originalWalkSpeed;
@@ -16,10 +16,11 @@ public class Boost : MonoBehaviour
     private float originalRunSpeed;
     private float originalRunBackSpeed;
 
-    [SerializeField] private AudioSource audioSource = null;
-    [SerializeField] private AudioClip audioClip = null;
+    // [SerializeField] private AudioSource audioSource = null;
+    // [SerializeField] private AudioClip audioClip = null;
     void Awake()
     {
+        ExtremeBoost = 2;
         movementStateManager = GameObject.Find("Duzzy").GetComponent<MovementStateManager>();
         BoostEffect = GameObject.Find("SpeedLines");
     }
@@ -38,8 +39,8 @@ public class Boost : MonoBehaviour
         {
             BoostEffect.GetComponent<ParticleSystem>().Play();
             BoostEffect.GetComponent<AudioSource>().Play();
-            audioSource.clip = audioClip;
-            audioSource.Play();
+            // audioSource.clip = audioClip;
+            // audioSource.Play();
             StartCoroutine(speedBoost());
         }
     }

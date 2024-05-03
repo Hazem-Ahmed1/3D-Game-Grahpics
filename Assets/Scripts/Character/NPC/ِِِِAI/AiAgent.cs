@@ -59,8 +59,8 @@ public class AiAgent : MonoBehaviour
         PlayerTransform = GameObject.FindGameObjectWithTag("Player");
         FinalDoorTransform = GameObject.Find("LockedDoor");
         KeyTransform = GameObject.Find("KeyDoor(Clone)");
-        FinalGoalTransform = GameObject.Find("FinalGoal(Clone)").transform;
-        GoalTransform = GameObject.Find("Goal(Clone)").transform;
+        FinalGoalTransform = GameObject.Find("FinalGoal").transform;
+        GoalTransform = GameObject.Find("Goal").transform;
 
         // Create instance from this state
         stateMachine.RegisterState(new AiGetKeyState());

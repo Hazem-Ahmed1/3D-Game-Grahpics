@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
+using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
@@ -15,14 +17,11 @@ public class MainMenu : MonoBehaviour
         selectmap.SetUp();
     }
     public void Quit(){
-         //for test in unity
-        #if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-        #else
-            Application.Quit();
-        #endif
+        Application.Quit();
+    }
 
-        
-        // Application.Quit();
+    public void getRules()
+    {
+        SceneManager.LoadScene("CUTSCENE");
     }
 }
