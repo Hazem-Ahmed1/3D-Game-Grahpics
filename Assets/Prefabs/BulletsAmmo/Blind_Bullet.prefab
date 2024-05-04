@@ -14765,7 +14765,7 @@ GameObject:
   - component: {fileID: 420004320995457342}
   - component: {fileID: 2541662362509494707}
   - component: {fileID: 8365081765004157950}
-  - component: {fileID: 2089885579227994014}
+  - component: {fileID: 7239287779124387650}
   m_Layer: 0
   m_Name: Blind_Bullet
   m_TagString: Blind_Bullet
@@ -14829,8 +14829,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 3
---- !u!65 &2089885579227994014
-BoxCollider:
+--- !u!135 &7239287779124387650
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -14848,5 +14848,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.2, y: 0.1, z: 0.2}
-  m_Center: {x: 0, y: 0.52, z: 0}
+  m_Radius: 0.3
+  m_Center: {x: 0, y: 0, z: 0.3}

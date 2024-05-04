@@ -61,7 +61,7 @@ public class treasureSpowner : MonoBehaviour
     public void SetupTreasureAndFlag()
     {
         int chooseGoal = Random.Range(-2, 2);
-        Debug.Log(chooseGoal);
+
         if (chooseGoal >= 0)
         {
             Vector3 randomVector = GetRandomClose();

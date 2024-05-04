@@ -57,7 +57,6 @@ public class itemSpowner : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("No more item positions available.");
                     break;
                 }
             }

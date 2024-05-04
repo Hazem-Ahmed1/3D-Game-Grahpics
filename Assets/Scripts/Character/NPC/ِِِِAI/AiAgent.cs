@@ -117,6 +117,10 @@ public class AiAgent : MonoBehaviour
         {
             initialState = AiStateId.AttackPlayer;
         }
+        if (!hasDoorLockedKey && !dance && !Blind && !snatcher && KeyTransform == null) // && distancePlayer <= 20f)
+        {
+            initialState = AiStateId.AttackPlayer;
+        }
         if (keyInventory.hasDoorLockedKey && distancePlayer >= 3f && !snatcher)
         {
             initialState = AiStateId.ChasePlayer;

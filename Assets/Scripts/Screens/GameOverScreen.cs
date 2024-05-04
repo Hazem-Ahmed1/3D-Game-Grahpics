@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class GameOverScreen : MonoBehaviour
 {
+
+    public GameObject pauseMenuUI;
+    private bool isPaused = false;
     public void setup(){
         Cursor.lockState = CursorLockMode.None;
         gameObject.SetActive(true);
@@ -22,15 +25,60 @@ public class GameOverScreen : MonoBehaviour
     }
 
     public void QuitButton(){
-        //for test in unity
-        #if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-        #else
-            Application.Quit();
-        #endif
-
-        
-        // Application.Quit();
-        
+        Application.Quit(); 
     }
+
+
+
+    private void Start()
+    {
+        if (pauseMenuUI != null)
+        {
+            pauseMenuUI.SetActive(false);
+        }
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (isPaused)
+            {
+                ResumeLevel();
+            }
+            else
+            {
+                PauseLevel();
+                Cursor.lockState = CursorLockMode.None;
+            }
+        }
+    }
+
+
+    public void ResumeLevel()
+    {
+        Time.timeScale = 1f;
+        isPaused = false;
+
+        if (pauseMenuUI != null)
+        {
+            pauseMenuUI.SetActive(false);
+            Cursor.lockState = CursorLockMode.Locked;
+
+        }
+    }
+
+
+
+    public void PauseLevel()
+    {
+        Time.timeScale = 0f;
+        isPaused = true;
+
+        if (pauseMenuUI != null)
+        {
+            pauseMenuUI.SetActive(true);
+        }
+    }
+
 }
