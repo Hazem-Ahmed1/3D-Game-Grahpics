@@ -57,10 +57,10 @@ public class AiAgent : MonoBehaviour
         animator = GetComponent<Animator>();
         stateMachine = new AiStateMachine(this);
         PlayerTransform = GameObject.FindGameObjectWithTag("Player");
-        FinalDoorTransform = GameObject.Find("LockedDoor");
+        // FinalDoorTransform = GameObject.Find("LockedDoor");
         KeyTransform = GameObject.Find("KeyDoor(Clone)");
-        FinalGoalTransform = GameObject.Find("FinalGoal").transform;
-        GoalTransform = GameObject.Find("Goal").transform;
+        // FinalGoalTransform = GameObject.Find("FinalGoal(Clone)").transform;
+        // GoalTransform = GameObject.Find("Goal").transform;
 
         // Create instance from this state
         stateMachine.RegisterState(new AiGetKeyState());
@@ -93,6 +93,7 @@ public class AiAgent : MonoBehaviour
             FinalGoalTransform = GameObject.Find("FinalGoal(Clone)").transform;
         }
         if(GameObject.Find("KeyDoor(Clone)") != null){
+            // Debug.Log("88888");
             KeyTransform = GameObject.Find("KeyDoor(Clone)");
         }
         if(GameObject.Find("Goal(Clone)") != null){
@@ -124,6 +125,7 @@ public class AiAgent : MonoBehaviour
         (PlayerTransform.GetComponentInChildren<Animator>().GetLayerWeight(3) == 1 || 
         PlayerTransform.GetComponent<MovementStateManager>().isRandomMovementActive))
         {
+            navMeshAgent.stoppingDistance = 3;
             initialState = AiStateId.StealKey;
         }
         if (snatcher)
@@ -147,7 +149,7 @@ public class AiAgent : MonoBehaviour
             audioSource.clip = audioClip_ForPickItems;
             audioSource.Play();
             hasDoorLockedKey = true;
-            initialState = AiStateId.goToDoorGoal;
+            initialState = AiStateId.goToFinalGoal;
             stateMachine.changeState(initialState);
             Destroy(other.gameObject);
             navMeshAgent.stoppingDistance = 0;
@@ -164,19 +166,19 @@ public class AiAgent : MonoBehaviour
             Destroy(other.gameObject);
             scoreNPC++;
             points.text = "X" + scoreNPC.ToString();
-            Debug.Log(scoreNPC);
+            // Debug.Log(scoreNPC);
             treasureSpowner.SetupTreasureAndFlag();
         }
         else if (other.gameObject.name.Equals("Goal(Clone)"))
         {
             audioSource.clip = audioClip_ForPickItems;
             audioSource.Play();
-            Debug.Log("yarabb");
+            // Debug.Log("yarabb");
             Destroy(other.gameObject);
             scoreNPC++;
             points.text = "X" + scoreNPC.ToString();
             treasureSpowner.SetupTreasureAndFlag();
-            Debug.Log(scoreNPC);
+            // Debug.Log(scoreNPC);
         }
         else if (other.gameObject.CompareTag("DoorGoal") && hasDoorLockedKey && !IsOpen)
         {

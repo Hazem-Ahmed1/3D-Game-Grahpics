@@ -43,7 +43,7 @@ public class treasureSpowner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     Vector3 GetRandomOpen()
@@ -62,21 +62,23 @@ public class treasureSpowner : MonoBehaviour
     {
         int chooseGoal = Random.Range(-2, 2);
         Debug.Log(chooseGoal);
-        if(chooseGoal >= 0){
+        if (chooseGoal >= 0)
+        {
             Vector3 randomVector = GetRandomClose();
             GameObject instantiatedTreasure = Instantiate(closeTreasure, randomVector, Quaternion.identity);
             float heightAboveTreasure = 20.0f;
-            flag.transform.position = new Vector3(instantiatedTreasure.transform.position.x, 
-                                          instantiatedTreasure.transform.position.y + heightAboveTreasure, 
+            flag.transform.position = new Vector3(instantiatedTreasure.transform.position.x,
+                                          instantiatedTreasure.transform.position.y + heightAboveTreasure,
                                           instantiatedTreasure.transform.position.z);
             flag.SetActive(true);
         }
-        else if(chooseGoal < 0){
+        else if (chooseGoal < 0)
+        {
             Vector3 randomVector = GetRandomOpen();
             GameObject instantiatedTreasure = Instantiate(openTreasure, randomVector, Quaternion.identity);
             float heightAboveTreasure = 20.0f;
-            flag.transform.position = new Vector3(instantiatedTreasure.transform.position.x, 
-                                          instantiatedTreasure.transform.position.y + heightAboveTreasure, 
+            flag.transform.position = new Vector3(instantiatedTreasure.transform.position.x,
+                                          instantiatedTreasure.transform.position.y + heightAboveTreasure,
                                           instantiatedTreasure.transform.position.z);
             flag.SetActive(true);
         }
