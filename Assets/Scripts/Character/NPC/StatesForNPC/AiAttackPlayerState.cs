@@ -30,7 +30,7 @@ public class AiAttackPlayerState : AiState
     public void Exit(AiAgent agent)
     {
         agent.GetComponent<WeaponIK>().enabled = false;
-        agent.navMeshAgent.stoppingDistance = 0;
+        agent.navMeshAgent.stoppingDistance = 1.5f;
         agent.initialState = AiStateId.ChasePlayer;
     }
 

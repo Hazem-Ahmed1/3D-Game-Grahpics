@@ -17,6 +17,7 @@ public class AiGetKeyState : AiState
     {
         if (!agent.enabled)
         {
+            // Debug.Log("88888");
             return;
         }
         timer -= Time.deltaTime;
@@ -30,6 +31,7 @@ public class AiGetKeyState : AiState
         {
             if (agent.KeyTransform != null)
             {
+                // Debug.Log("88888");
                 Vector3 direction = (agent.KeyTransform.transform.position - agent.navMeshAgent.destination);
                 direction.y = 0;
                 if (direction.sqrMagnitude > agent.config.maxDistance * agent.config.maxDistance)
@@ -37,6 +39,7 @@ public class AiGetKeyState : AiState
                     if (agent.navMeshAgent.pathStatus != NavMeshPathStatus.PathPartial)
                     {
                         agent.navMeshAgent.destination = agent.KeyTransform.transform.position;
+                        // Debug.Log("88888");
                     }
                 }
                 timer = agent.config.maxTime;

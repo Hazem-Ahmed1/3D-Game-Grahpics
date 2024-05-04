@@ -14,11 +14,11 @@ public class AiGoToFinalGoalState : AiState
     {
         if (!agent.navMeshAgent.hasPath)
         {
-            if (agent.FinalGoalTransform != null && agent.snatcher){
-                agent.navMeshAgent.destination = agent.FinalGoalTransform.position;
-            }
-            else if (agent.GoalTransform != null && !agent.snatcher){
+            if (agent.GoalTransform != null && agent.snatcher){
                 agent.navMeshAgent.destination = agent.GoalTransform.position;
+            }
+            else if (agent.FinalGoalTransform != null && !agent.snatcher){
+                agent.navMeshAgent.destination = agent.FinalGoalTransform.position;
             }
         }
     }
@@ -30,7 +30,7 @@ public class AiGoToFinalGoalState : AiState
         }
         timer -= Time.deltaTime;
         
-        if (agent.GoalTransform != null && !agent.snatcher){
+        if (agent.GoalTransform != null && agent.snatcher){
             if (timer < 0.0f)
             {
                 Vector3 direction = agent.GoalTransform.position - agent.navMeshAgent.destination;
@@ -45,7 +45,7 @@ public class AiGoToFinalGoalState : AiState
                 timer = agent.config.maxTime;
             }
         }
-        else if (agent.FinalGoalTransform != null && agent.snatcher)
+        else if (agent.FinalGoalTransform != null && !agent.snatcher)
         {
             if (timer < 0.0f)
             {
