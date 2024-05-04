@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BulletBehav : MonoBehaviour
 {
-    public float speed = 10f;
+    private float speed = 25f;
     public float maxLifetime = 3f; // Maximum lifetime of the bullet before it gets destroyed
 
     private Vector3 targetPoint;

@@ -153,7 +153,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Door: 1
   Key: 0
-  Player: {fileID: 0}
   audioClip: {fileID: 0}
 --- !u!114 &1734446165063970091
 MonoBehaviour:
@@ -396,7 +395,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.2, y: 0.32, z: 0.33}
+  m_Size: {x: 0.93, y: 0.92, z: 0.51}
   m_Center: {x: 0, y: 0.96, z: -0.08}
 --- !u!54 &4788822236179225533
 Rigidbody:

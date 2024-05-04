@@ -514,9 +514,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b504bd1f867816429074b2d2837a5c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  points: {fileID: 0}
   keyInventory: {fileID: 2120387463853067371}
+  treasureSpowner: {fileID: 0}
   audioSource: {fileID: 0}
   audioClip: {fileID: 8300000, guid: 3bd0b0fcc2cf6394da6631ef99bce29f, type: 3}
+  coins: {fileID: 0}
 --- !u!114 &2635655885322837078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -745,6 +748,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CountAttackClick: 0
+  active: {fileID: 3523703886669354350}
 --- !u!114 &4725855968630773030
 MonoBehaviour:
   m_ObjectHideFlags: 0

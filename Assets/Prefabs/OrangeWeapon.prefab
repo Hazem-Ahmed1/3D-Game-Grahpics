@@ -4899,11 +4899,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFiring: 0
   FireRate: 25
+  maxAmmo: 10
+  currentAmmo: 0
   muzzleFlash: {fileID: 9125403540156183163}
   hitEffect: {fileID: 6441556255551087312, guid: bb590728387e6e342826d334e807e193, type: 3}
   RaycastOrigin: {fileID: 3312644669015652977}
   RayCastDestination: {fileID: 0}
-  Bulletprefab: {fileID: 1527757746103499217, guid: b64427ee9b9c10b47ac7917ba8f63ca6, type: 3}
+  Bulletprefab: {fileID: 6342126029373426756, guid: af5d0eef11044c14bb00b07e9a14aba3, type: 3}
   weaponAnimation: {fileID: 7400000, guid: 5caa74b9edcd38e40b5edd30bf6eaa12, type: 2}
 --- !u!1 &6539963024518394004
 GameObject:

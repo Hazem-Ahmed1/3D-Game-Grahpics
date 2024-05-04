@@ -114,7 +114,6 @@ public class MovementStateManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-//        Debug.Log("Bedo");
         if (other.CompareTag("BulletTornado"))
         {
             StartRandomMovement();
