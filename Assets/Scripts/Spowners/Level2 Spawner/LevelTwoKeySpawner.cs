@@ -16,6 +16,15 @@ public class LevelTwoKeySpawner : MonoBehaviour
         KeyVector.Add(new Vector3(9.60000038f,5.73000002f,67.0999985f));
         KeyVector.Add(new Vector3(20.2999992f,5.73000002f,99.0999985f));
         KeyVector.Add(new Vector3(171.050003f,5.73000002f,21.8700008f));
+        KeyVector.Add(new Vector3(190.119995f,6.32999992f,109.300003f));
+        KeyVector.Add(new Vector3(191.600006f,6.46000004f,40.2000008f));
+        KeyVector.Add(new Vector3(113.099998f,6.03299999f,79.3000031f));
+        KeyVector.Add(new Vector3(58.0999985f,6.05600023f,109.300003f));
+        KeyVector.Add(new Vector3(161.199997f,6.01300001f,131.699997f));
+        KeyVector.Add(new Vector3(142.399994f,5.96199989f,153.100006f));
+        KeyVector.Add(new Vector3(69.1999969f,5.90199995f,121.699997f));
+        KeyVector.Add(new Vector3(10.8000002f,6.14599991f,46.5f));
+        KeyVector.Add(new Vector3(165.110001f,5.96099997f,15f));
         // KeyVector.Add(new Vector3(115.5f, 0.76f, 88.05f));
         // KeyVector.Add(new Vector3(133.3f, 0.76f, 145.1f));
         // KeyVector.Add(new Vector3(169.8f, 0.76f, 136.4f));
