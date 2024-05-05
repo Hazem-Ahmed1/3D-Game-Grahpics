@@ -13,6 +13,7 @@ public class BlindEffect : MonoBehaviour
     private Color originalTextColor;
     public Text text1;
     public Text text2;
+    [SerializeField] AudioSource blindSound;
 
     private Coroutine reduceTransparencyCoroutine;
 
@@ -41,6 +42,7 @@ public class BlindEffect : MonoBehaviour
         if (collision.tag == "Blind_Bullet")
         {
             isBlind = true;
+            blindSound.Play();
             SetFullTransparency();
             if (reduceTransparencyCoroutine != null)
             {

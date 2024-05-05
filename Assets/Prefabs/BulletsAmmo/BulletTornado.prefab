@@ -9869,6 +9869,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tornado: {fileID: 2937942762382221472, guid: fcaf272f89b27554489eea7c3598857f, type: 3}
+  TornadoSound: {fileID: 7928742957493512043, guid: f2c11b73c33537048bcd3cddfe1c652b, type: 3}
 --- !u!54 &6512600849894583166
 Rigidbody:
   m_ObjectHideFlags: 0

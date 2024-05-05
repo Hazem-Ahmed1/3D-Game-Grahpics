@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,12 +8,13 @@ public class GameOverScreen : MonoBehaviour
 {
 
     public GameObject pauseMenuUI;
+    public Timer timer;
+
     private bool isPaused = false;
     public void setup(){
         Cursor.lockState = CursorLockMode.None;
         gameObject.SetActive(true);
         Time.timeScale = 0f;
-        Cursor.lockState = CursorLockMode.None;
     }
     public void RestartButton(){
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -21,7 +23,7 @@ public class GameOverScreen : MonoBehaviour
 
     public void Main(){
         gameObject.SetActive(false);
-         SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void QuitButton(){
@@ -40,7 +42,7 @@ public class GameOverScreen : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && timer.remaingTime > 0)
         {
             if (isPaused)
             {

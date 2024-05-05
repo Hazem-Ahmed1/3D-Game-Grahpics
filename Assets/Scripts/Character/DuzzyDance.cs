@@ -7,34 +7,55 @@ public class DuzzyDance : MonoBehaviour
     public Animator animator;
     public GameObject Duzzy;
     public GameObject Player;
-    public bool isDelayed = false;
+    [SerializeField] AudioSource DanceSound;
+    bool isDancing = false;
+
+    // Reference to Duzzy's movement controller
+    MovementStateManager movementController;
+
     // Start is called before the first frame update
     void Start()
     {
         animator = Player.GetComponent<Animator>();
+        movementController = Duzzy.GetComponent<MovementStateManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (isDancing)
+        {
+            if (!DanceSound.isPlaying)
+            {
+                DanceSound.Play();
+            }
+        }
+        else
+        {
+            DanceSound.Stop();
+        }
     }
+
     private void OnTriggerEnter(Collider collision)
     {
         if (collision.tag == "Bullet_Dancing")
         {
-            Duzzy.GetComponent<MovementStateManager>().enabled = false;
-            animator.SetLayerWeight(animator.GetLayerIndex("DozyDancing"), 1);
-            isDelayed = true;
-            Invoke("ResetDance", 5f);
-            // Destroy(collision.gameObject);
+            StartCoroutine(StartDance());
         }
     }
 
-    private void ResetDance()
+    IEnumerator StartDance()
     {
-        Duzzy.GetComponent<MovementStateManager>().enabled = true;
+        // Disable Duzzy's movement controller
+        movementController.enabled = false;
+
+        animator.SetLayerWeight(animator.GetLayerIndex("DozyDancing"), 1);
+        isDancing = true;
+        yield return new WaitForSeconds(5f);
+        isDancing = false;
         animator.SetLayerWeight(animator.GetLayerIndex("DozyDancing"), 0);
-        isDelayed = false;
+
+        // Re-enable Duzzy's movement controller
+        movementController.enabled = true;
     }
 }

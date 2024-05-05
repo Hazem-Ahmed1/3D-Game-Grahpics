@@ -20,8 +20,8 @@ public class AiAttackPlayerState : AiState
         agent.navMeshAgent.destination = agent.PlayerTransform.transform.position;
         if (Time.time - lastShotTime >= shotDelay)
         {
-            agent.audioSource.clip = agent.audioClip_forShoot;
-            agent.audioSource.Play();
+
+            agent.audioClip_forShoot.Play();
             ShootAtPlayer(agent);
             lastShotTime = Time.time;
         }

@@ -496,6 +496,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c2548595a9ad17479aa586099c09ca9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Shoot: {fileID: 0}
   weapon: {fileID: 0}
   crossHairTarget: {fileID: 0}
   HandIK: {fileID: 1709371872053112330}
@@ -518,8 +519,9 @@ MonoBehaviour:
   keyInventory: {fileID: 2120387463853067371}
   treasureSpowner: {fileID: 0}
   audioSource: {fileID: 0}
-  audioClip: {fileID: 8300000, guid: 3bd0b0fcc2cf6394da6631ef99bce29f, type: 3}
+  Slap: {fileID: 0}
   coins: {fileID: 0}
+  slapEffect: {fileID: 5339739117810204693, guid: 26e1cb216e3635e4a820f58a1118d6b9, type: 3}
 --- !u!114 &2635655885322837078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -535,7 +537,7 @@ MonoBehaviour:
   animator: {fileID: 4385488948292859183}
   Duzzy: {fileID: 1257734690536828411}
   Player: {fileID: 2007858114508944518}
-  isDelayed: 0
+  DanceSound: {fileID: 0}
 --- !u!114 &1466111431527815367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -553,6 +555,7 @@ MonoBehaviour:
   isBlind: 0
   text1: {fileID: 0}
   text2: {fileID: 0}
+  blindSound: {fileID: 0}
 --- !u!1 &1292139360964242785
 GameObject:
   m_ObjectHideFlags: 0

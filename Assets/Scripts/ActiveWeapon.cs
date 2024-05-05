@@ -6,6 +6,7 @@ using UnityEngine.Animations;
 
 public class ActiveWeapon : MonoBehaviour
 {
+    [SerializeField] AudioSource Shoot;
     [HideInInspector]
     public RayCastWeapon weapon;
     public Transform crossHairTarget;
@@ -36,6 +37,7 @@ public class ActiveWeapon : MonoBehaviour
         {
             if (Input.GetButtonDown("Fire1") && !weapon.isFiring)
             {
+                Shoot.Play();
                 weapon.StartFiring();
             }
             if (weapon.isFiring)

@@ -5,12 +5,12 @@ using TMPro;
 
 public class Timer : MonoBehaviour
 {
-    public GameOverScreen  gameOverScreen;
+    public GameObject  gameOverScreen;
     public GameObject playerUI;
     public GameObject playerUI2;
-    public WinScreen win;
+    public GameObject win;
     [SerializeField] TextMeshProUGUI timerText;
-    [SerializeField]float remaingTime;
+    [SerializeField] public float remaingTime;
     void Update()
     {
         if(remaingTime > 0){
@@ -23,11 +23,14 @@ public class Timer : MonoBehaviour
             playerUI2.SetActive(false);
             if(PlayerInteraction.score > AiAgent.scoreNPC){
                 Cursor.lockState = CursorLockMode.None;
-                win.setup(PlayerInteraction.score);
+                win.SetActive(true);
+                Time.timeScale = 0f;
             }
-            else{
+            else
+            {
                 Cursor.lockState = CursorLockMode.None;
-                gameOverScreen.setup();
+                gameOverScreen.SetActive(true);
+                Time.timeScale = 0f;
             }
             
         }
