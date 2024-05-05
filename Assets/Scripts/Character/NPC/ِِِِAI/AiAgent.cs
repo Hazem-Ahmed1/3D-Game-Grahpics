@@ -175,6 +175,7 @@ public class AiAgent : MonoBehaviour
         }
         else if (other.gameObject.CompareTag("DoorGoal") && hasDoorLockedKey && !IsOpen)
         {
+            Debug.Log("iiii");
             other.gameObject.GetComponent<KeyDoorController>().OpenDoor();
             getGoal = true;
             navMeshAgent.stoppingDistance = 0f;
