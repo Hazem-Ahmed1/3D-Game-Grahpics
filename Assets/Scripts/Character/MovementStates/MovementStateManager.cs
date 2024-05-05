@@ -27,6 +27,7 @@ public class MovementStateManager : MonoBehaviour
     [HideInInspector] public Animator anim;
 
     public bool isRandomMovementActive = false;
+    [SerializeField] public AudioSource TornadoSound;
 
     // make it static it may works with out  references 
     void Start()
@@ -95,10 +96,12 @@ public class MovementStateManager : MonoBehaviour
     public void StartRandomMovement()
     {
         isRandomMovementActive = true;
+        TornadoSound.Play();
     }
 
     public void EndRandomMovement()
     {
+        TornadoSound.Stop();
         isRandomMovementActive = false;
     }
 

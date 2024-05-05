@@ -6,7 +6,7 @@ public class ComboAttack : MonoBehaviour
 {
     Animator animator;
     public int CountAttackClick;
-    private bool isAttacking;
+    public static bool isAttacking;
 
     public ActiveWeapon active;
     void Start()
@@ -29,7 +29,7 @@ public class ComboAttack : MonoBehaviour
         isAttacking = true;
         animator.SetLayerWeight(1, 1);
         BtnAttack();
-        yield return new WaitForSeconds(0.1f); // Adjust this delay as needed
+        yield return new WaitForSeconds(1.5f); // Adjust this delay as needed
         isAttacking = false;
     }
 
