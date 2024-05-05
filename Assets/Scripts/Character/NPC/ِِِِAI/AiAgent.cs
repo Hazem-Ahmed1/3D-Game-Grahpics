@@ -16,8 +16,6 @@ public class AiAgent : MonoBehaviour
     public AiAgentConfig config;
     public static int scoreNPC = 0;
 
-    public KeyDoorController keyDoorController;
-    public DoorController doorController;
     public KeyInventory keyInventory;
     public GameObject KeyFlag;
     public GameObject BodyLight;
@@ -160,7 +158,7 @@ public class AiAgent : MonoBehaviour
         }
         else if (other.gameObject.name.Equals("Door"))
         {
-            doorController.PlayAnimation();
+            other.gameObject.GetComponent<DoorController>().PlayAnimation();
             IsOpen = true;
         }
         else if (other.gameObject.name.Equals("FinalGoal(Clone)"))
@@ -170,30 +168,26 @@ public class AiAgent : MonoBehaviour
             Destroy(other.gameObject);
             scoreNPC++;
             points.text = "X" + scoreNPC.ToString();
-            // Debug.Log(scoreNPC);
             treasureSpowner.SetupTreasureAndFlag();
         }
         else if (other.gameObject.name.Equals("Goal(Clone)"))
         {
             audioSource.clip = audioClip_ForPickItems;
             audioSource.Play();
-            // Debug.Log("yarabb");
             Destroy(other.gameObject);
             scoreNPC++;
             points.text = "X" + scoreNPC.ToString();
             treasureSpowner.SetupTreasureAndFlag();
-            // Debug.Log(scoreNPC);
         }
         else if (other.gameObject.CompareTag("DoorGoal") && hasDoorLockedKey && !IsOpen)
         {
-            keyDoorController.OpenDoor();
+            other.gameObject.GetComponent<KeyDoorController>().OpenDoor();
             getGoal = true;
             navMeshAgent.stoppingDistance = 0f;
             IsOpen = true;
         }
         else if (other.gameObject.CompareTag("Bullet_Dancing"))
         {
-            // Debug.Log("llll");
             initialState = AiStateId.Dance;
             stateMachine.changeState(initialState);
             Destroy(other.gameObject);
