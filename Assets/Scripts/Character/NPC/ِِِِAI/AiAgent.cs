@@ -43,9 +43,8 @@ public class AiAgent : MonoBehaviour
     public GameObject BulletTornado;
     public float bulletSpeed = 10;
 
-    [SerializeField] public AudioSource audioSource = null;
-    public AudioClip audioClip_ForPickItems = null;
-    [SerializeField] public AudioClip audioClip_forShoot = null;
+    [SerializeField] public AudioSource audioClip_ForPickItems;
+    [SerializeField] public AudioSource audioClip_forShoot;
 
     // Start is called before the first frame update
     [System.Obsolete]
@@ -75,7 +74,6 @@ public class AiAgent : MonoBehaviour
         stateMachine.changeState(initialState);
         KeyFlag.active = hasDoorLockedKey? true : false;
         BodyLight.active = hasDoorLockedKey? true : false;
-        audioSource = GameObject.Find("Audio Source").GetComponent<AudioSource>();
 
         scoreNPC = 0;
         points.text = "X" + scoreNPC.ToString();
@@ -86,7 +84,6 @@ public class AiAgent : MonoBehaviour
     void Update()
     {
         
-        audioSource = GameObject.Find("Audio Source").GetComponent<AudioSource>();
         if(GameObject.Find("FinalGoal(Clone)") != null){
             FinalGoalTransform = GameObject.Find("FinalGoal(Clone)").transform;
         }
@@ -148,8 +145,7 @@ public class AiAgent : MonoBehaviour
     {
         if (other.gameObject.name.Equals("KeyDoor(Clone)"))
         {
-            audioSource.clip = audioClip_ForPickItems;
-            audioSource.Play();
+            audioClip_ForPickItems.Play();
             hasDoorLockedKey = true;
             initialState = AiStateId.goToFinalGoal;
             stateMachine.changeState(initialState);
@@ -163,8 +159,7 @@ public class AiAgent : MonoBehaviour
         }
         else if (other.gameObject.name.Equals("FinalGoal(Clone)"))
         {
-            audioSource.clip = audioClip_ForPickItems;
-            audioSource.Play();
+            audioClip_ForPickItems.Play();
             Destroy(other.gameObject);
             scoreNPC++;
             points.text = "X" + scoreNPC.ToString();
@@ -172,8 +167,7 @@ public class AiAgent : MonoBehaviour
         }
         else if (other.gameObject.name.Equals("Goal(Clone)"))
         {
-            audioSource.clip = audioClip_ForPickItems;
-            audioSource.Play();
+            audioClip_ForPickItems.Play();
             Destroy(other.gameObject);
             scoreNPC++;
             points.text = "X" + scoreNPC.ToString();
