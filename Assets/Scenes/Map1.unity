@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: 6deeb64094e282c44875f9abbe794890, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 4249fe73466845d43a0067269ab5011a, type: 2}
 --- !u!1001 &243927
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -703,7 +703,7 @@ PrefabInstance:
     - target: {fileID: 5961453331573522035, guid: d89055209feeedc4bab721da90ca4678, type: 3}
       propertyPath: treasureSpowner
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1351190868}
     - target: {fileID: 5961453331573522035, guid: d89055209feeedc4bab721da90ca4678, type: 3}
       propertyPath: hasDoorLockedKey
       value: 0
@@ -811,7 +811,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0.279, y: 1.806, z: -8.775}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -117, y: 27}
+  m_AnchoredPosition: {x: -119, y: 12}
   m_SizeDelta: {x: 244.37799, y: 225.4014}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &15396492
@@ -2550,7 +2550,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -78, y: 58}
+  m_AnchoredPosition: {x: -78, y: 51.1}
   m_SizeDelta: {x: 65.26538, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &107267214
@@ -4030,7 +4030,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 174466755}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.11315649, y: -0.000000007402727, z: -8.4308155e-10, w: 0.9935772}
+  m_LocalRotation: {x: -0.11315667, y: 2.2756878e-15, z: 8.1714685e-17, w: 0.9935772}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4341,7 +4341,7 @@ PrefabInstance:
     - target: {fileID: 5961453331573522035, guid: d89055209feeedc4bab721da90ca4678, type: 3}
       propertyPath: treasureSpowner
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1351190868}
     - target: {fileID: 5961453331573522035, guid: d89055209feeedc4bab721da90ca4678, type: 3}
       propertyPath: hasDoorLockedKey
       value: 0
@@ -4785,7 +4785,8 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -0.4912
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1459597836494297368, guid: 6f197379f048542eaa14769591d67d0f, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -6585,6 +6586,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6242260932895798661, guid: e2947d46bde79124c82b000f57bf9ca1, type: 3}
   m_PrefabInstance: {fileID: 258401661}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &268337311 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1257734690536828411, guid: 1affd3408495d784ea2027bfbd49075c, type: 3}
+  m_PrefabInstance: {fileID: 1224087504}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &272336997
 PrefabInstance:
@@ -12523,7 +12529,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -77, y: -67}
+  m_AnchoredPosition: {x: -77, y: -52.9}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &535831311
@@ -13309,7 +13315,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -15, y: -61.25}
+  m_AnchoredPosition: {x: -15, y: -45}
   m_SizeDelta: {x: 259.6, y: 72.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &591369783
@@ -13508,7 +13514,7 @@ GameObject:
   - component: {fileID: 604436186}
   - component: {fileID: 604436185}
   m_Layer: 0
-  m_Name: Main Camera (1)
+  m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13522,8 +13528,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 604436183}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.14917347, y: -0.00000001701386, z: -0.0000000025667357, w: 0.9888111}
-  m_LocalPosition: {x: 181.77, y: 6.8094854, z: 15.96258}
+  m_LocalRotation: {x: -0.14917365, y: 0, z: 0, w: 0.9888111}
+  m_LocalPosition: {x: 129.4322, y: 8.209485, z: 20.642578}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -13571,7 +13577,7 @@ MonoBehaviour:
     m_Bits: 128
   excluseLayerMask: 
   openDoorKey: 101
-  Player: {fileID: 0}
+  Player: {fileID: 268337311}
   crosshair: {fileID: 1776970661}
   interactionUI: {fileID: 1130845905}
   interactionText: {fileID: 807423707}
@@ -13984,7 +13990,7 @@ PrefabInstance:
     - target: {fileID: 1459597836494297368, guid: 6f197379f048542eaa14769591d67d0f, type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 268337311}
     - target: {fileID: 1459597836494297368, guid: 6f197379f048542eaa14769591d67d0f, type: 3}
       propertyPath: audioSource
       value: 
@@ -13992,11 +13998,11 @@ PrefabInstance:
     - target: {fileID: 1459597836494297368, guid: 6f197379f048542eaa14769591d67d0f, type: 3}
       propertyPath: PlayerInventory
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1224087507}
     - target: {fileID: 1459597836494297368, guid: 6f197379f048542eaa14769591d67d0f, type: 3}
       propertyPath: showDoorLockedUI
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1511490168}
     - target: {fileID: 1919865066786487082, guid: 6f197379f048542eaa14769591d67d0f, type: 3}
       propertyPath: audioClip
       value: 
@@ -14098,6 +14104,10 @@ PrefabInstance:
       value: FantasyHouse (4)
       objectReference: {fileID: 0}
     - target: {fileID: 8397580870476942362, guid: 6f197379f048542eaa14769591d67d0f, type: 3}
+      propertyPath: m_Name
+      value: DoorLoocked
+      objectReference: {fileID: 0}
+    - target: {fileID: 8397580870476942362, guid: 6f197379f048542eaa14769591d67d0f, type: 3}
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
@@ -14109,7 +14119,8 @@ PrefabInstance:
       propertyPath: m_TagString
       value: DoorGoal
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 29503768099638921, guid: 6f197379f048542eaa14769591d67d0f, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -15042,7 +15053,7 @@ PrefabInstance:
     - target: {fileID: 1459597836494297368, guid: 6f197379f048542eaa14769591d67d0f, type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 268337311}
     - target: {fileID: 1459597836494297368, guid: 6f197379f048542eaa14769591d67d0f, type: 3}
       propertyPath: audioSource
       value: 
@@ -15050,11 +15061,11 @@ PrefabInstance:
     - target: {fileID: 1459597836494297368, guid: 6f197379f048542eaa14769591d67d0f, type: 3}
       propertyPath: PlayerInventory
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1224087507}
     - target: {fileID: 1459597836494297368, guid: 6f197379f048542eaa14769591d67d0f, type: 3}
       propertyPath: showDoorLockedUI
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1511490168}
     - target: {fileID: 1919865066786487082, guid: 6f197379f048542eaa14769591d67d0f, type: 3}
       propertyPath: audioClip
       value: 
@@ -15264,6 +15275,10 @@ PrefabInstance:
       value: FantasyHouse (1)
       objectReference: {fileID: 0}
     - target: {fileID: 8397580870476942362, guid: 6f197379f048542eaa14769591d67d0f, type: 3}
+      propertyPath: m_Name
+      value: DoorLoocked
+      objectReference: {fileID: 0}
+    - target: {fileID: 8397580870476942362, guid: 6f197379f048542eaa14769591d67d0f, type: 3}
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
@@ -15287,7 +15302,8 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -1.6106
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 29503768099638921, guid: 6f197379f048542eaa14769591d67d0f, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -16410,7 +16426,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -69, y: -67}
+  m_AnchoredPosition: {x: -74.4, y: -51.5}
   m_SizeDelta: {x: 84.890015, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &681586648
@@ -16753,7 +16769,7 @@ PrefabInstance:
     - target: {fileID: 1459597836494297368, guid: 6f197379f048542eaa14769591d67d0f, type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 268337311}
     - target: {fileID: 1459597836494297368, guid: 6f197379f048542eaa14769591d67d0f, type: 3}
       propertyPath: audioSource
       value: 
@@ -16761,11 +16777,11 @@ PrefabInstance:
     - target: {fileID: 1459597836494297368, guid: 6f197379f048542eaa14769591d67d0f, type: 3}
       propertyPath: PlayerInventory
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1224087507}
     - target: {fileID: 1459597836494297368, guid: 6f197379f048542eaa14769591d67d0f, type: 3}
       propertyPath: showDoorLockedUI
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1511490168}
     - target: {fileID: 1919865066786487082, guid: 6f197379f048542eaa14769591d67d0f, type: 3}
       propertyPath: audioClip
       value: 
@@ -16863,6 +16879,10 @@ PrefabInstance:
       value: FantasyHouse (5)
       objectReference: {fileID: 0}
     - target: {fileID: 8397580870476942362, guid: 6f197379f048542eaa14769591d67d0f, type: 3}
+      propertyPath: m_Name
+      value: DoorLoocked
+      objectReference: {fileID: 0}
+    - target: {fileID: 8397580870476942362, guid: 6f197379f048542eaa14769591d67d0f, type: 3}
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
@@ -16874,7 +16894,8 @@ PrefabInstance:
       propertyPath: m_TagString
       value: DoorGoal
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 29503768099638921, guid: 6f197379f048542eaa14769591d67d0f, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -21782,7 +21803,7 @@ PrefabInstance:
     - target: {fileID: 1459597836494297368, guid: 6f197379f048542eaa14769591d67d0f, type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 268337311}
     - target: {fileID: 1459597836494297368, guid: 6f197379f048542eaa14769591d67d0f, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -21975,7 +21996,8 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -1.2681
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1459597836494297368, guid: 6f197379f048542eaa14769591d67d0f, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -22786,8 +22808,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 2.140625, y: -0.00012207031}
-  m_SizeDelta: {x: 4.2811, y: 0.0002}
+  m_AnchoredPosition: {x: 0.000061035156, y: -0.000015258789}
+  m_SizeDelta: {x: 0, y: -0.000015259}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &970527865
 MonoBehaviour:
@@ -23013,7 +23035,7 @@ PrefabInstance:
     - target: {fileID: 5961453331573522035, guid: d89055209feeedc4bab721da90ca4678, type: 3}
       propertyPath: treasureSpowner
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1351190868}
     - target: {fileID: 5961453331573522035, guid: d89055209feeedc4bab721da90ca4678, type: 3}
       propertyPath: hasDoorLockedKey
       value: 0
@@ -26924,7 +26946,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1138987714}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.14917345, y: -0.000000008506931, z: -0.0000000012833676, w: 0.9888111}
+  m_LocalRotation: {x: -0.14917363, y: 1e-45, z: -0, w: 0.988811}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -27985,7 +28007,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -77, y: 61}
+  m_AnchoredPosition: {x: -77, y: 52.5}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1188526117
@@ -29165,15 +29187,15 @@ PrefabInstance:
       objectReference: {fileID: 486909870}
     - target: {fileID: 3307226568882915053, guid: 1affd3408495d784ea2027bfbd49075c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 181.11
+      value: 128.7722
       objectReference: {fileID: 0}
     - target: {fileID: 3307226568882915053, guid: 1affd3408495d784ea2027bfbd49075c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.33
+      value: 7.73
       objectReference: {fileID: 0}
     - target: {fileID: 3307226568882915053, guid: 1affd3408495d784ea2027bfbd49075c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 18.7
+      value: 23.38
       objectReference: {fileID: 0}
     - target: {fileID: 3307226568882915053, guid: 1affd3408495d784ea2027bfbd49075c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -29238,7 +29260,7 @@ PrefabInstance:
     - target: {fileID: 8908738075873163744, guid: 1affd3408495d784ea2027bfbd49075c, type: 3}
       propertyPath: treasureSpowner
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1351190868}
     - target: {fileID: 9192733207753161975, guid: 1affd3408495d784ea2027bfbd49075c, type: 3}
       propertyPath: m_Data.m_SourceObjects.m_Item0.transform
       value: 
@@ -31470,7 +31492,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -15, y: -61}
+  m_AnchoredPosition: {x: -15, y: -43}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1317954450
@@ -32002,6 +32024,17 @@ MonoBehaviour:
   openTreasure: {fileID: 106414452035752073, guid: 4bfe36ea8d086154393fe938b8e33d17, type: 3}
   closeTreasure: {fileID: 582239070812697054, guid: 53b17c673b78ea44aa0e707776c24b58, type: 3}
   flag: {fileID: 1351190866}
+--- !u!114 &1351190868 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2217148650290438022, guid: 5f2c49088c0bb104a86f26dd1646f488, type: 3}
+  m_PrefabInstance: {fileID: 1351190864}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1351190865}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ab313248661e3a49b30660925646da8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1351369089 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7073170409258630210, guid: 9c6683e19173bf44cb0894bee7c902e6, type: 3}
@@ -35318,7 +35351,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1489053560
 RectTransform:
   m_ObjectHideFlags: 0
@@ -35336,8 +35369,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.0009765625, y: 0.000061035156}
-  m_SizeDelta: {x: -285.18, y: -148.22}
+  m_AnchoredPosition: {x: 0.0008544922, y: 0.00035095215}
+  m_SizeDelta: {x: -318.19, y: -91.579}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1489053561
 MonoBehaviour:
@@ -37214,7 +37247,7 @@ Transform:
   m_GameObject: {fileID: 1575863184}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 181.11, y: 6.73, z: 17.400002}
+  m_LocalPosition: {x: 128.7722, y: 8.13, z: 22.08}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -45862,8 +45895,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0.157, y: -0.927, z: 9.595}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 152, y: -32}
-  m_SizeDelta: {x: 244.378, y: 225.4014}
+  m_AnchoredPosition: {x: 149, y: -14.1}
+  m_SizeDelta: {x: 232.72, y: 225.4014}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1720232111
 MonoBehaviour:
@@ -48954,7 +48987,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1826450417}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.13121045, y: -0, z: -0, w: 0.9913545}
+  m_LocalRotation: {x: -0.13121061, y: 0.000000019071004, z: 0.000000002524141, w: 0.9913545}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -49978,8 +50011,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 3.76}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -136.90479, y: 99}
-  m_SizeDelta: {x: 178.87018, y: 186.2843}
+  m_AnchoredPosition: {x: -175, y: 41}
+  m_SizeDelta: {x: 155.4001, y: 138.7325}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1913810280
 MonoBehaviour:
@@ -51408,11 +51441,15 @@ PrefabInstance:
     - target: {fileID: 1459597836494297368, guid: 6f197379f048542eaa14769591d67d0f, type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 268337311}
     - target: {fileID: 1459597836494297368, guid: 6f197379f048542eaa14769591d67d0f, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1459597836494297368, guid: 6f197379f048542eaa14769591d67d0f, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 42333994}
     - target: {fileID: 1459597836494297368, guid: 6f197379f048542eaa14769591d67d0f, type: 3}
       propertyPath: PlayerInventory
       value: 
@@ -51420,7 +51457,7 @@ PrefabInstance:
     - target: {fileID: 1459597836494297368, guid: 6f197379f048542eaa14769591d67d0f, type: 3}
       propertyPath: showDoorLockedUI
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1511490168}
     - target: {fileID: 2237448837356790392, guid: 6f197379f048542eaa14769591d67d0f, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -51605,7 +51642,8 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -0.7599
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1459597836494297368, guid: 6f197379f048542eaa14769591d67d0f, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -52565,7 +52603,7 @@ PrefabInstance:
     - target: {fileID: 796679348877335132, guid: 17e97f957efcc3f4ebba097ce52c7e7f, type: 3}
       propertyPath: treasureSpowner
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1351190868}
     - target: {fileID: 796679348877335132, guid: 17e97f957efcc3f4ebba097ce52c7e7f, type: 3}
       propertyPath: bulletSpawnPoint
       value: 
@@ -52578,6 +52616,10 @@ PrefabInstance:
       propertyPath: FinalGoalTransform
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 796679348877335132, guid: 17e97f957efcc3f4ebba097ce52c7e7f, type: 3}
+      propertyPath: audioClip_forShoot
+      value: 
+      objectReference: {fileID: 486909867}
     - target: {fileID: 796679348877335132, guid: 17e97f957efcc3f4ebba097ce52c7e7f, type: 3}
       propertyPath: audioClip_ForPickItems
       value: 
@@ -56552,6 +56594,10 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 176615863}
+  - {fileID: 604436184}
+  - {fileID: 1575863187}
+  - {fileID: 734950407}
+  - {fileID: 2091960328}
   - {fileID: 36705720}
   - {fileID: 42333995}
   - {fileID: 627177670}
@@ -56571,13 +56617,9 @@ SceneRoots:
   - {fileID: 1257666364}
   - {fileID: 2077030117}
   - {fileID: 2019007684}
-  - {fileID: 2091960328}
-  - {fileID: 604436184}
   - {fileID: 527277000}
   - {fileID: 743112817}
   - {fileID: 1224087504}
-  - {fileID: 734950407}
-  - {fileID: 1575863187}
   - {fileID: 486909866}
   - {fileID: 15160223}
   - {fileID: 980058114}

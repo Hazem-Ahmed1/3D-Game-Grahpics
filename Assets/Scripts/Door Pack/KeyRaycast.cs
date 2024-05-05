@@ -15,7 +15,7 @@ public class KeyRaycast : MonoBehaviour
     [SerializeField] private Image crosshair = null ;
     private bool isCrosshairActive;
     private bool doOnce;
-    private string interactTableTagDoor = "DoorInteractiveObj";
+    private string interactTableTagDoor = "DoorGoal";
     private string interactTableTagKey = "Key";
 
     public GameObject interactionUI;
