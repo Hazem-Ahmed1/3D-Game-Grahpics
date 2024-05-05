@@ -23,14 +23,15 @@ public class itemSpowner : MonoBehaviour
         itempositions.Add(new Vector3(277.200012f, 1.07000005f + 0.35f, 91));
         itempositions.Add(new Vector3(238.899994f, 1.07000005f + 0.35f, 113.199997f));
         itempositions.Add(new Vector3(217.600006f, 1.07000005f + 0.35f, 131.300003f));
-        itempositions.Add(new Vector3(161.800003f, 0.899999976f + 0.35f, 131.300003f));
-        itempositions.Add(new Vector3(143.690002f, 0.899999976f + 0.35f, 131.300003f));
+
+        itempositions.Add(new Vector3(161.800003f, 0.660000026f, 131.300003f));
+        itempositions.Add(new Vector3(143.690002f, 0.653999984f, 131.300003f));
         itempositions.Add(new Vector3(143.690002f, 0.899999976f + 0.35f, 113.510002f));
         itempositions.Add(new Vector3(158.600006f, 0.899999976f + 0.35f, 113.510002f));
         itempositions.Add(new Vector3(109.760002f, 0.899999976f + 0.35f, 113.510002f));
         itempositions.Add(new Vector3(109.760002f, 0.899999976f + 0.35f, 148.399994f));
         itempositions.Add(new Vector3(144.199997f, 0.899999976f + 0.35f, 155));
-        itempositions.Add(new Vector3(150.300003f, 0.899999976f + 0.35f, 133.5f));
+        itempositions.Add(new Vector3(150.300003f, 0.689999998f, 133.5f));
 
         SpawnItems();
     }

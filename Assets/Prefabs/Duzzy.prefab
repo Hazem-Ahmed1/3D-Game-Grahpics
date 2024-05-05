@@ -484,6 +484,7 @@ MonoBehaviour:
   gravity: -9.81
   anim: {fileID: 0}
   isRandomMovementActive: 0
+  TornadoSound: {fileID: 0}
 --- !u!114 &3523703886669354350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -518,9 +519,8 @@ MonoBehaviour:
   points: {fileID: 0}
   keyInventory: {fileID: 2120387463853067371}
   treasureSpowner: {fileID: 0}
-  audioSource: {fileID: 0}
   Slap: {fileID: 0}
-  coins: {fileID: 0}
+  collect: {fileID: 0}
   slapEffect: {fileID: 5339739117810204693, guid: 26e1cb216e3635e4a820f58a1118d6b9, type: 3}
 --- !u!114 &2635655885322837078
 MonoBehaviour:
@@ -642,8 +642,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.2, y: 0.2, z: 0.2}
-  m_Center: {x: 0, y: 0.24, z: 0}
+  m_Size: {x: 0.35, y: 0.47, z: 0.2}
+  m_Center: {x: 0, y: 0.15, z: 0}
 --- !u!1 &1928554459346284707
 GameObject:
   m_ObjectHideFlags: 0

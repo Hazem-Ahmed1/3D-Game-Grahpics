@@ -76,7 +76,7 @@ public class AiAgent : MonoBehaviour
         BodyLight.active = hasDoorLockedKey? true : false;
 
         scoreNPC = 0;
-        points.text = "X" + scoreNPC.ToString();
+        points.text = scoreNPC.ToString();
     }
 
     // Update is called once per frame
@@ -112,7 +112,7 @@ public class AiAgent : MonoBehaviour
         {
             initialState = AiStateId.AttackPlayer;
         }
-        if (!hasDoorLockedKey && !dance && !Blind && !snatcher && KeyTransform == null) // && distancePlayer <= 20f)
+        if (!hasDoorLockedKey && !dance && !Blind && !snatcher && KeyTransform == null  && distancePlayer <= 20f)
         {
             initialState = AiStateId.AttackPlayer;
         }
@@ -162,7 +162,7 @@ public class AiAgent : MonoBehaviour
             audioClip_ForPickItems.Play();
             Destroy(other.gameObject);
             scoreNPC++;
-            points.text = "X" + scoreNPC.ToString();
+            points.text = scoreNPC.ToString();
             treasureSpowner.SetupTreasureAndFlag();
         }
         else if (other.gameObject.name.Equals("Goal(Clone)"))
@@ -170,7 +170,7 @@ public class AiAgent : MonoBehaviour
             audioClip_ForPickItems.Play();
             Destroy(other.gameObject);
             scoreNPC++;
-            points.text = "X" + scoreNPC.ToString();
+            points.text = scoreNPC.ToString();
             treasureSpowner.SetupTreasureAndFlag();
         }
         else if (other.gameObject.CompareTag("DoorGoal") && hasDoorLockedKey && !IsOpen)
