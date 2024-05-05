@@ -14,7 +14,10 @@ public class LevelTwoSpawnerTreasure : MonoBehaviour
     void Start()
     {
 
-        // close.Add(new Vector3(111.330002f,1.62f,13.4300003f));
+        close.Add(new Vector3(101f,7.03800011f,31.1100006f));
+        close.Add(new Vector3(11.8699999f,7.08099985f,19.9099998f));
+        close.Add(new Vector3(36.7579994f,6.61999989f,92.1920013f));
+
         // close.Add(new Vector3(111.330002f,1.62f,35.5099983f));
         // close.Add(new Vector3(111.330002f,1.62f,67.0199966f));
         // close.Add(new Vector3(162.830002f,1.62f,94.8700027f));
@@ -25,7 +28,9 @@ public class LevelTwoSpawnerTreasure : MonoBehaviour
         // close.Add(new Vector3(184.860001f,1.62f,10.6400003f));
         // close.Add(new Vector3(168.100006f,1.62f,10.6400003f));
 
-        // open.Add(new Vector3(214.100006f,1.38f,26.9599991f));
+        open.Add(new Vector3(55.3400002f,6.48099995f,96.8700027f));
+        open.Add(new Vector3(49.2089996f,6.61999989f,46.6699982f));
+        open.Add(new Vector3(51.1860008f,6.44000006f,6.84299994f));
         // open.Add(new Vector3(254.759995f,1.38f,13.29f));
         // open.Add(new Vector3(273.929993f,1.38f,51.0499992f));
         // open.Add(new Vector3(280.049988f,1.38f,89.25f));
