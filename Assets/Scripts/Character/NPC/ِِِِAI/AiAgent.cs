@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Animations.Rigging;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class AiAgent : MonoBehaviour
@@ -26,7 +27,7 @@ public class AiAgent : MonoBehaviour
     [HideInInspector] public GameObject FinalDoorTransform;
     [HideInInspector] public Transform GoalTransform;
     [HideInInspector] public Animator animator;
-    public treasureSpowner treasureSpowner;
+    public GameObject treasureSpowner;
     public TextMeshProUGUI points;
     public GameObject Weapon;
     public GameObject RigLayer;
@@ -157,25 +158,38 @@ public class AiAgent : MonoBehaviour
             other.gameObject.GetComponent<DoorController>().PlayAnimation();
             IsOpen = true;
         }
-        else if (other.gameObject.name.Equals("FinalGoal(Clone)"))
+        else if (other.gameObject.name.Equals("FinalGoal(Clone)") || other.gameObject.name.Equals("FinalGoal"))
         {
             audioClip_ForPickItems.Play();
             Destroy(other.gameObject);
             scoreNPC++;
             points.text = scoreNPC.ToString();
-            treasureSpowner.SetupTreasureAndFlag();
+            if (SceneManager.GetActiveScene().name.Equals("Map2"))
+            {
+                treasureSpowner.GetComponent<treasureSpowner>().SetupTreasureAndFlag();
+            }
+            else if (SceneManager.GetActiveScene().name.Equals("Map1"))
+            {
+                treasureSpowner.GetComponent<LevelTwoSpawnerTreasure>().SetupTreasureAndFlag();
+            }
         }
-        else if (other.gameObject.name.Equals("Goal(Clone)"))
+        else if (other.gameObject.name.Equals("Goal(Clone)")  || other.gameObject.name.Equals("Goal"))
         {
             audioClip_ForPickItems.Play();
             Destroy(other.gameObject);
             scoreNPC++;
             points.text = scoreNPC.ToString();
-            treasureSpowner.SetupTreasureAndFlag();
+            if (SceneManager.GetActiveScene().name.Equals("Map2"))
+            {
+                treasureSpowner.GetComponent<treasureSpowner>().SetupTreasureAndFlag();
+            }
+            else if (SceneManager.GetActiveScene().name.Equals("Map1"))
+            {
+                treasureSpowner.GetComponent<LevelTwoSpawnerTreasure>().SetupTreasureAndFlag();
+            }
         }
         else if (other.gameObject.CompareTag("DoorGoal") && hasDoorLockedKey && !IsOpen)
         {
-            Debug.Log("iiii");
             other.gameObject.GetComponent<KeyDoorController>().OpenDoor();
             getGoal = true;
             navMeshAgent.stoppingDistance = 0f;

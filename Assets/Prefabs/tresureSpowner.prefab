@@ -137,6 +137,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2248284636696174928}
   - component: {fileID: 2217148650290438022}
+  - component: {fileID: 8619210392552321024}
   m_Layer: 0
   m_Name: tresureSpowner
   m_TagString: Untagged
@@ -167,7 +168,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6740462934220502097}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1ab313248661e3a49b30660925646da8, type: 3}
   m_Name: 
@@ -176,6 +177,21 @@ MonoBehaviour:
   closeTreasure: {fileID: 582239070812697054, guid: 53b17c673b78ea44aa0e707776c24b58, type: 3}
   flag: {fileID: 5866865481179759758}
   positions: {fileID: 11400000, guid: 7228be4647e2cc9419b81773504f4c9a, type: 2}
+--- !u!114 &8619210392552321024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6740462934220502097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35f7a3b4cc854174099cd9a57bbc5b86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  openTreasure: {fileID: 106414452035752073, guid: 4bfe36ea8d086154393fe938b8e33d17, type: 3}
+  closeTreasure: {fileID: 582239070812697054, guid: 53b17c673b78ea44aa0e707776c24b58, type: 3}
+  flag: {fileID: 5866865481179759758}
 --- !u!1001 &4474107347598874121
 PrefabInstance:
   m_ObjectHideFlags: 0

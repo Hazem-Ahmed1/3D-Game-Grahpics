@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Animations;
 using UnityEngine;
-using UnityEngine.Animations;
 
 public class ActiveWeapon : MonoBehaviour
 {
@@ -15,14 +13,11 @@ public class ActiveWeapon : MonoBehaviour
     public Transform leftGrip;
     public Transform rightGrip;
     Animator animator;
-    AnimatorOverrideController overrideController;
 
 
     private void Start()
     {
         animator = GetComponentInChildren<Animator>();
-
-        overrideController = animator.runtimeAnimatorController as AnimatorOverrideController;
 
         RayCastWeapon exisitingWeapon = GetComponentInChildren<RayCastWeapon>();
         if (exisitingWeapon)
@@ -67,27 +62,6 @@ public class ActiveWeapon : MonoBehaviour
         weapon.transform.localRotation = Quaternion.identity;
         animator.SetLayerWeight(2, 1.0f);
 
-        Invoke(nameof(SetAnimation), 0.001f);
-
-
     }
 
-    public void SetAnimation()
-    {
-
-        overrideController["empty"] = weapon.weaponAnimation;
-    }
-
-    [ContextMenu("Save Weapon pose")]
-    public void SaveWepaonPose()
-    {
-        GameObjectRecorder recorder = new GameObjectRecorder(gameObject);
-        recorder.BindComponentsOfType<Transform>(WeapoonParent.gameObject, false);
-        recorder.BindComponentsOfType<Transform>(leftGrip.gameObject, false);
-        recorder.BindComponentsOfType<Transform>(rightGrip.gameObject, false);
-        recorder.TakeSnapshot(0.0f);
-        recorder.SaveToClip(weapon.weaponAnimation);
-        UnityEditor.AssetDatabase.SaveAssets();
-
-    }
 }

@@ -70,6 +70,7 @@ public class treasureSpowner : MonoBehaviour
             flag.transform.position = new Vector3(instantiatedTreasure.transform.position.x,
                                           instantiatedTreasure.transform.position.y + heightAboveTreasure,
                                           instantiatedTreasure.transform.position.z);
+            instantiatedTreasure.name = "FinalGoal(Clone)";
             flag.SetActive(true);
         }
         else if (chooseGoal < 0)
@@ -80,6 +81,7 @@ public class treasureSpowner : MonoBehaviour
             flag.transform.position = new Vector3(instantiatedTreasure.transform.position.x,
                                           instantiatedTreasure.transform.position.y + heightAboveTreasure,
                                           instantiatedTreasure.transform.position.z);
+            instantiatedTreasure.name = "Goal(Clone)";
             flag.SetActive(true);
         }
     }
