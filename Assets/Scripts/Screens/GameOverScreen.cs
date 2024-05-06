@@ -50,8 +50,8 @@ public class GameOverScreen : MonoBehaviour
             }
             else
             {
-                PauseLevel();
                 Cursor.lockState = CursorLockMode.None;
+                PauseLevel();
             }
         }
     }

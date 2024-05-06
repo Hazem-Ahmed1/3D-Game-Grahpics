@@ -7,7 +7,7 @@ public class SceneChanger : MonoBehaviour
 {
 
     public float changeTime;
-    public string sceneName;
+    private string sceneName = "MainMenu";
 
     [SerializeField] GameObject skipButton;
 
@@ -37,6 +37,6 @@ public class SceneChanger : MonoBehaviour
 
     public void Skip()
     {
-        SceneManager.LoadScene("Map1");
+        SceneManager.LoadScene("MainMenu");
     }
 }

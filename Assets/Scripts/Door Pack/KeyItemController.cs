@@ -39,10 +39,8 @@ public class KeyItemController : MonoBehaviour
         else if (Key)
         {
             distancePlayer = Vector3.Distance(Player.gameObject.transform.position, this.gameObject.transform.position);
-            Debug.Log(distancePlayer);
             if (distancePlayer <= 5)
             {
-                Debug.Log("hhh");
                 PlayerInventory.hasDoorLockedKey = true;
                 audioSource.clip = audioClip;
                 audioSource.Play();

@@ -3,23 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class PlayerInteraction : MonoBehaviour {
     public TextMeshProUGUI points;
     public KeyInventory keyInventory;
     public static int score;
-    public treasureSpowner treasureSpowner;
     
     [SerializeField] private AudioSource Slap;
     [SerializeField] private AudioSource collect;
 
-
+    [SerializeField] private GameObject treasureSpawnerGameObject;
     [SerializeField] private GameObject slapEffect; 
     
     public void Strat(){
         score = 0;
-        points.text = "X" + score.ToString();
+        points.text = score.ToString();
     }
     void OnTriggerEnter(Collider other) {
         if (other.gameObject.GetComponent<AiAgent>() != null
@@ -33,12 +33,20 @@ public class PlayerInteraction : MonoBehaviour {
 
         }
 
-        if (other.gameObject.name.Equals("FinalGoal(Clone)") || other.gameObject.name.Equals("Goal(Clone)"))
+        if ((other.gameObject.name.Equals("FinalGoal(Clone)") || other.gameObject.name.Equals("Goal(Clone)")) && SceneManager.GetActiveScene().name.Equals("Map2"))
         {
             Destroy(other.gameObject);
-            treasureSpowner.SetupTreasureAndFlag();
+            treasureSpawnerGameObject.GetComponent<treasureSpowner>().SetupTreasureAndFlag();
             score++;
-            points.text = "X" + score.ToString();
+            points.text =  score.ToString();
+            collect.Play();
+        }
+        if ((other.gameObject.name.Equals("FinalGoal(Clone)") || other.gameObject.name.Equals("Goal(Clone)")) && SceneManager.GetActiveScene().name.Equals("Map1") )
+        {
+            Destroy(other.gameObject);
+            treasureSpawnerGameObject.GetComponent<LevelTwoSpawnerTreasure>().SetupTreasureAndFlag();
+            score++;
+            points.text = score.ToString();
             collect.Play();
         }
     }
