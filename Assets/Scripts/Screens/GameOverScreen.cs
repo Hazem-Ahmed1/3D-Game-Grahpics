@@ -50,6 +50,7 @@ public class GameOverScreen : MonoBehaviour
             }
             else
             {
+                Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;
                 PauseLevel();
             }
@@ -66,6 +67,7 @@ public class GameOverScreen : MonoBehaviour
         {
             pauseMenuUI.SetActive(false);
             Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
 
         }
     }
